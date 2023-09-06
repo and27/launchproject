@@ -1,5 +1,6 @@
-export const formMarkup = `
+import { addUserSurvey } from "./utils/supabase";
 
+export const formMarkup = `
 <section class="form__container">
     <div class="form__content">
         <h2 class="form__title">Let's start</h2>
@@ -16,33 +17,35 @@ export const formMarkup = `
         ¿Cuánta experiencia tienes emprendiendo?
         <span>Required</span>
         </legend>
-        <div>
+        <div class="form__radio-container">
+        <label >
             <input
                 type="radio"
                 name="experience"
                 id="exp1"
                 value="1"
             />
-            <label htmlFor="exp1">0 experiencia</label>
-        </div>
+           0 experiencia
+        </label>
     
-    <div>
+        <label >
       <input
         type="radio"
         name="experience"
         id="exp2"
         value="2"
       />
-      <label htmlFor="exp2">Algo de experiencia</label>
-    </div>
-    <div>
+    Algo de experiencia
+    </label>
+    <label>
       <input
         type="radio"
         name="experience"
         id="exp3"
         value="3"
       />
-      <label htmlFor="exp3">Mucha experiencia</label>
+    Mucha experiencia
+    </label>
     </div>
   </fieldset>
 
@@ -56,38 +59,117 @@ export const formMarkup = `
       ¿En cuánto tiempo esperas crear lanzar tu negocio?
       <span>Required</span>
     </legend>
-    <div>
+    <div class="form__radio-container">
+    <label>
       <input
         type="radio"
         name="time"
         id="time1"
         value="1"
       />
-      <label htmlFor="time1">1 semana</label>
-    </div>
-    <div>
+      1 semana
+      </label>
+      <label >
       <input
         type="radio"
         name="time"
         id="time2"
         value="2"
       />
-      <label htmlFor="time2">2 semanas</label>
-    </div>
-    <div>
+     2 semanas
+     </label>
+     <label htmlFor="time4">
       <input
         type="radio"
         name="time"
         id="time4"
         value="3"
       />
-      <label htmlFor="time4">4 semanas</label>
-    </div>
+     4 semanas
+     </label>
+     </div>
   </fieldset>
 
   <p>¿Cuál es tu idea?</p>
-  <textarea>
+  <textarea id="idea">
   </textarea>
-  <button class="header__button">Enviar</button>
+  <button class="form__button">Continuar</button>
 </form>
 </section>`;
+
+export const setupForm = (element: HTMLElement) => {
+  const surveyId = localStorage.getItem("surveyId");
+  if (surveyId) return;
+  element!.innerHTML = formMarkup;
+  handleForm(element.querySelector(".form__form")!);
+};
+
+export const handleForm = (form: HTMLFormElement) => {
+  const experienceFieldset = form.querySelector("#experience");
+  const timeFieldset = form.querySelector("#time");
+  const idea = form.querySelector("#idea");
+  const button = form.querySelector(".form__button");
+
+  const selectedValues: {
+    experience: string | null;
+    time: string | null;
+    idea: string | null;
+  } = {
+    experience: null,
+    time: null,
+    idea: null,
+  };
+
+  const updateSelectedValues = (
+    fieldsetId: "experience" | "time" | "idea",
+    value: string
+  ) => {
+    selectedValues[fieldsetId] = value;
+  };
+
+  experienceFieldset?.addEventListener("change", (event) => {
+    const selectedValue = (event.target as HTMLInputElement).value;
+    updateSelectedValues("experience", selectedValue);
+  });
+
+  timeFieldset?.addEventListener("change", (event) => {
+    const selectedValue = (event.target as HTMLInputElement).value;
+    updateSelectedValues("time", selectedValue);
+  });
+
+  idea?.addEventListener("change", (event) => {
+    const selectedValue = (event.target as HTMLInputElement).value;
+    updateSelectedValues("idea", selectedValue);
+  });
+
+  button?.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const isFormValid = Object.values(selectedValues).every(
+      (value) => value !== null
+    );
+
+    if (!isFormValid) {
+      alert("Please fill all the fields");
+      return;
+    }
+
+    localStorage.setItem("formData", JSON.stringify(selectedValues));
+    const userId = localStorage.getItem("userId");
+    if (!userId) return;
+
+    const userAnswers = {
+      experience: selectedValues.experience,
+      time: selectedValues.time,
+      idea: selectedValues.idea,
+    };
+
+    const { data, error } = await addUserSurvey({
+      user: userId,
+      survey: userAnswers,
+    });
+
+    if (error) console.error(error);
+    else localStorage.setItem("surveyId", data?.[0].id as string);
+  });
+};
