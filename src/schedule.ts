@@ -1,4 +1,4 @@
-import { animate } from "motion";
+import { animate, inView, stagger } from "motion";
 
 const day1Markup = `
 <div class="schedule__day-content schedule__day-content--active" id="day1">
@@ -99,7 +99,12 @@ export const scheduleMarkup = `
 </section>
 `;
 
-export function setupSchedule(schedule: HTMLElement) {
+export function setupSchedule(element: HTMLElement) {
+  const surveyId = localStorage.getItem("surveyId");
+  if (!surveyId) return;
+  element.innerHTML = scheduleMarkup;
+  const schedule = element.querySelector(".schedule__container")!;
+
   const days = schedule.querySelectorAll(".schedule__day");
 
   const filteredDays = Array.from(days).filter((day) => {
@@ -125,13 +130,22 @@ export function setupSchedule(schedule: HTMLElement) {
     animate(
       currentDayContent,
       {
-        x: [-60, 0],
+        x: [-50, 0],
+        opacity: [0.2, 1],
       },
-      { duration: 1 }
+      { duration: 1, easing: "ease-in-out" }
     );
   };
 
   filteredDays.forEach((day) => {
     day.addEventListener("click", () => setSelectedDay(day as HTMLElement));
+  });
+
+  inView(schedule, () => {
+    animate(
+      days,
+      { opacity: [0, 1], x: [-20, 0] },
+      { duration: 2, delay: stagger(0.2) }
+    );
   });
 }
