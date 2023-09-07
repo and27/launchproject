@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #272727;
+  background-color: #292929;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -34,6 +34,8 @@ p {
 body {
   margin: 0;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -43,7 +45,7 @@ body {
 }
 
 section {
-  margin-block: 12em;
+  margin-block: 6em;
 }
 
 h1 {
@@ -86,14 +88,16 @@ button {
   transition: border-color 0.25s;
   box-shadow: 2px 3px #000;
 }
+
 button:hover {
-  border-color: #fff;
+  border-color: #646cffaa;
   background-color: #dadada;
 }
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: solid 2px white;
+  outline-offset: 3px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -115,6 +119,7 @@ button:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 32px;
+  inline-size: 100%;
 }
 
 .header__container {
@@ -143,7 +148,21 @@ button:focus-visible {
 
 .header__button--outline,
 .navigation__button--outline {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  box-shadow: 2px 3px #000;
   background-color: #1a1a1a;
+  color: white;
+}
+
+a.header__button--outline {
+  text-decoration: none;
   color: white;
 }
 
@@ -152,6 +171,14 @@ button:focus-visible {
   box-shadow: 3px 3px #000;
   border-color: #000;
   background-color: #212121;
+}
+
+.header__button--outline:focus,
+.header__button--outline:focus-visible,
+.navigation__button--outline:focus,
+.navigation__button--outline:focus-visible {
+  outline: solid 2px white;
+  outline-offset: 3px;
 }
 
 /*# schedule */
@@ -292,7 +319,7 @@ fieldset {
   padding: 0;
 }
 
-fieldset div {
+fieldset label {
   padding: 1em;
   border-width: 2px;
   border-color: #1a1a1a;
@@ -304,6 +331,15 @@ fieldset div {
   border-radius: 10px;
 }
 
-fieldset div:hover {
+fieldset label:hover {
   border-color: #bbb;
+}
+
+fieldset label:focus-within {
+  border-color: #bbb;
+}
+
+.form__radio-container {
+  display: flex;
+  gap: 16px;
 }
