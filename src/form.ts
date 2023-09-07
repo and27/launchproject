@@ -1,4 +1,4 @@
-import { addUserSurvey } from "./utils/supabase";
+import { addUserSurvey, loginWithGoogle } from "./utils/supabase";
 
 export const formMarkup = `
 <section class="form__container">
@@ -156,7 +156,7 @@ export const handleForm = (form: HTMLFormElement) => {
 
     localStorage.setItem("formData", JSON.stringify(selectedValues));
     const userId = localStorage.getItem("userId");
-    if (!userId) return;
+    loginWithGoogle();
 
     const userAnswers = {
       experience: selectedValues.experience,
@@ -170,6 +170,8 @@ export const handleForm = (form: HTMLFormElement) => {
     });
 
     if (error) console.error(error);
-    else localStorage.setItem("surveyId", data?.[0].id as string);
+    else {
+      localStorage.setItem("surveyId", data?.[0].id as string);
+    }
   });
 };

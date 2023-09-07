@@ -1,5 +1,6 @@
 import { AuthChangeEvent, Session } from "@supabase/supabase-js";
 import { loginWithGoogle, supabase } from "./utils/supabase";
+import { goToProfile } from "./routes";
 
 const handleLogin = async () => {
   await loginWithGoogle();
@@ -20,6 +21,7 @@ export async function setupLogin(element: HTMLElement) {
           userId && localStorage.setItem("userId", userId as string);
           const userName = session?.user?.identities?.[0]?.identity_data?.name;
           element.innerHTML = `${userName}`;
+          goToProfile();
           element.removeEventListener("click", handleLogin);
           element.addEventListener("click", handleLogout);
         }
@@ -27,6 +29,8 @@ export async function setupLogin(element: HTMLElement) {
         if (event == "SIGNED_OUT") {
           element.innerHTML = "Login";
           element.addEventListener("click", handleLogin);
+          element.removeEventListener("click", handleLogout);
+          localStorage.removeItem("userId");
         }
       }
     );
