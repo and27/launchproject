@@ -40,6 +40,11 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
         </div>      
         </div>
     </section>
+
+    <footer class="footer__container">
+      <div class="footer__content">
+        <p class="footer__text">Launch 2023</p>
+      </div>
   </div>
 `;
 
