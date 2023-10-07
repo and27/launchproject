@@ -1,7 +1,13 @@
 import { setupForm } from "./form";
+import { setupLottie } from "./lottie";
 import { Router } from "./routes/router";
 import { setupSchedule } from "./schedule";
 import { loginWithGoogle } from "./utils/supabase";
+
+export const goToHome = () => {
+  Router("home");
+  setupLottie(document.querySelector<HTMLDivElement>("#lottie")!);
+};
 
 export const goToProfile = () => {
   const surveyId = localStorage.getItem("surveyId");

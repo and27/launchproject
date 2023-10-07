@@ -1,4 +1,5 @@
 import { formMarkup } from "../form";
+import { homeMarkup } from "../home";
 import { scheduleMarkup } from "../schedule";
 
 type pathsType = {
@@ -17,5 +18,10 @@ export const paths: pathsType = {
   profile: {
     path: "/profile",
     template: scheduleMarkup,
+  },
+
+  home: {
+    path: "/",
+    template: homeMarkup,
   },
 };
