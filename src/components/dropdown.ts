@@ -23,7 +23,6 @@ const dropdownMarkup = `
   </div>`;
 
 export const setupDropdown = (element: HTMLElement) => {
-  console.log(element);
   element.innerHTML = dropdownMarkup;
   handleDropdownClose();
 };

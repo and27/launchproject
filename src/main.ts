@@ -1,8 +1,8 @@
 import "./style.css";
-import { setupLottie } from "./lottie.ts";
-import { setupLogin } from "./login.ts";
-import { setupRoutes } from "./routes.ts";
-import { homeMarkup } from "./home.ts";
+import { setupLottie } from "./utils/lottie.ts";
+import { setupLogin } from "./utils/login.ts";
+import { setupRoutes } from "./utils/routes.ts";
+import { homeMarkup } from "./screens/homeMarkup.ts";
 import { setupDropdown } from "./components/dropdown.ts";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = homeMarkup;

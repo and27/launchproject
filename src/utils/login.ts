@@ -1,5 +1,5 @@
 import { AuthChangeEvent, Session } from "@supabase/supabase-js";
-import { loginWithGoogle, supabase } from "./utils/supabase";
+import { loginWithGoogle, supabase } from "./supabase";
 import { goToHome, goToProfile } from "./routes";
 
 const handleLogin = async () => {
@@ -20,8 +20,8 @@ const toggleDropdown = () => {
   }
 };
 
-export async function setupLogin(element: HTMLElement) {
-  element.addEventListener("click", () => toggleDropdown());
+export async function setupLogin(loginButton: HTMLElement) {
+  loginButton.addEventListener("click", () => toggleDropdown());
 
   const logoutButton = document.querySelector(".dropdown-content:last-child");
   logoutButton?.addEventListener("click", handleLogout);
@@ -31,16 +31,14 @@ export async function setupLogin(element: HTMLElement) {
       (event: AuthChangeEvent, session: Session | null) => {
         if (event == "SIGNED_IN") {
           const userId = session?.user?.id;
-          console.log("setting user id", userId);
           userId && localStorage.setItem("userId", userId as string);
-          const userName = session?.user?.identities?.[0]?.identity_data?.email;
-
-          element.innerHTML = `${userName}`;
+          const parsedEmail = session?.user?.email?.split("@")[0];
+          loginButton.innerHTML = `${parsedEmail}`;
           goToProfile();
         }
 
         if (event == "SIGNED_OUT") {
-          element.innerHTML = "Login";
+          loginButton.innerHTML = "Login";
           localStorage.removeItem("userId");
           goToHome();
         }

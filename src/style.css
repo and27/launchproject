@@ -40,16 +40,25 @@ p {
 }
 
 body {
-  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding-inline: 16em;
+}
+
+.container {
+  margin-inline: 2em;
+
+  @media (min-width: 768px) {
+    margin-inline: 4em;
+  }
+
+  @media (min-width: 1024px) {
+    margin-inline: 6em;
+  }
 }
 
 section {
@@ -129,15 +138,30 @@ button:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  inline-size: 100%;
+
+  padding-inline: 2em;
+
+  @media (min-width: 768px) {
+    padding-inline: 4em;
+  }
+
+  @media (min-width: 1024px) {
+    padding-inline: 6em;
+  }
 }
 
 .header__container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   height: calc(100vh - 100px);
-  padding-block-end: var(--spacing-xxlarge);
+  padding-block-end: var(--spacing-large);
   margin-block-start: 0;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    padding-block-end: var(--spacing-xxlarge);
+  }
 }
 
 .header__lottie {
@@ -154,6 +178,10 @@ button:focus-visible {
 
 .header__title {
   margin-block-end: var(--spacing-large);
+}
+
+.header__highlight {
+  border-block-end: 4px solid rgb(232, 89, 100);
 }
 
 .header__text {
@@ -203,13 +231,18 @@ a.header__button--outline {
 /*# roadmap */
 .roadmap__container {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   gap: 6em;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
-.schedule__content {
-  flex-basis: 50%;
+.roadmap__content {
+  flex-basis: 100%;
   flex-shrink: 0;
   flex-grow: 1;
 
@@ -308,8 +341,13 @@ a.header__button--outline {
 .main__benefits-container {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
   gap: 2em;
   margin-block-start: var(--spacing-xxlarge);
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 .main__benefit:hover .main__benefit-number {
@@ -407,6 +445,17 @@ fieldset label:focus-within {
   padding-block: var(--spacing-xlarge);
 }
 
+.footer__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-base);
+}
+
+.footer__logo {
+  height: 30px;
+}
+
 .logo {
   height: 50px;
 }
@@ -441,7 +490,8 @@ fieldset label:focus-within {
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #e8e7e7;
+  border-radius: 8px;
 }
 
 .show {

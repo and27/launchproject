@@ -1,8 +1,8 @@
 import { setupForm } from "./form";
 import { setupLottie } from "./lottie";
-import { Router } from "./routes/router";
-import { setupSchedule } from "./schedule";
-import { loginWithGoogle } from "./utils/supabase";
+import { Router } from "../routes/router";
+import { setupRoadmap } from "../roadmap";
+import { loginWithGoogle } from "./supabase";
 
 export const goToHome = () => {
   Router("home");
@@ -20,7 +20,7 @@ export const goToProfile = () => {
     loginWithGoogle();
   } else {
     Router("profile");
-    setupSchedule(document.querySelector<HTMLElement>("#app")!);
+    setupRoadmap(document.querySelector<HTMLElement>("#app")!);
   }
 };
 

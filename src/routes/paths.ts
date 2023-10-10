@@ -1,6 +1,6 @@
-import { formMarkup } from "../form";
-import { homeMarkup } from "../home";
-import { scheduleMarkup } from "../schedule";
+import { homeMarkup } from "../screens/homeMarkup";
+import { roadmapMarkup } from "../screens/roadmapMarkup";
+import { initialSurveyFormMarkup } from "../screens/initialSurveyFormMarkup";
 
 type pathsType = {
   [key: string]: {
@@ -12,12 +12,12 @@ type pathsType = {
 export const paths: pathsType = {
   start: {
     path: "/start",
-    template: formMarkup,
+    template: initialSurveyFormMarkup,
   },
 
   profile: {
     path: "/profile",
-    template: scheduleMarkup,
+    template: roadmapMarkup,
   },
 
   home: {
