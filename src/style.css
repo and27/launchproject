@@ -388,8 +388,20 @@ a.header__button--outline {
 
 /*# form  */
 .form__container {
-  margin-inline: 9em;
   max-width: 680px;
+  margin: 0 auto;
+  padding-block: var(--spacing-xxlarge);
+}
+
+.form__content {
+  margin-block-end: var(--spacing-xxlarge);
+  text-align: center;
+}
+
+.form__question-container {
+  margin-block-end: var(--spacing-xlarge);
+  border-style: none;
+  padding: 0;
 }
 
 textarea {
@@ -401,13 +413,6 @@ textarea {
   border: none;
   border-radius: 8px;
   padding: 1em;
-}
-
-fieldset {
-  margin-block: 1.5em;
-  border-width: 5px;
-  border-style: none;
-  padding: 0;
 }
 
 fieldset label {

@@ -31,8 +31,17 @@ export const getUserInfoFromId = async (id: number) => {
   return { data, error };
 };
 
-export const addUserSurvey = async (survey: any) => {
-  const { data, error } = await supabase.from("survey").insert(survey).select();
+export const addProjectSurvey = async (survey: any) => {
+  const surveyInfo = {
+    idea: survey.idea,
+    concept: survey.concept,
+    mvp: survey.mvp,
+    mvp_launch: survey.mvp_launch,
+  };
+  const { data, error } = await supabase
+    .from("project_survey")
+    .insert(surveyInfo)
+    .select();
   return { data, error };
 };
 
