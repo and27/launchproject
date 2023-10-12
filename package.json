@@ -6,11 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.1.0",
+    "jsdom": "^22.1.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vitest": "^0.34.6",
+    "vitest-canvas-mock": "^0.3.3"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.33.1",
