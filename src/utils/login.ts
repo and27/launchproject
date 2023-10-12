@@ -10,7 +10,7 @@ const handleLogout = async () => {
   await supabase.auth.signOut();
 };
 
-const toggleDropdown = () => {
+export const toggleDropdown = () => {
   const userId = localStorage.getItem("userId");
   let dropdown = document.getElementById("userDropdown");
   if (userId) {
