@@ -1,29 +1,42 @@
 import { animate, inView, stagger } from "motion";
-import { addQuestionAnswer } from "./utils/supabase";
-import { roadmapData } from "./data/routeInfo";
+import { addRoadmapStageResponse } from "./utils/supabase";
 import { roadmapMarkup } from "./screens/roadmapMarkup";
+import { roadmapStageType } from "./data/roadmapStages";
 
-function createRoadmapDay(props: any) {
-  const { title, description, example, id, keyword } = props;
+const AI_API_URL = "https://launch-nlp.vercel.app/api/completion";
+
+export function setupRoadmap(page: HTMLElement) {
+  page.innerHTML = roadmapMarkup;
+  populateRoadmap(page);
+  addClickListenersOnTabs(page);
+  createTabsAnimation(page);
+  addSubmitListenersOnForms(page);
+}
+
+function createRoadmapStageContent(props: any) {
+  const { title, description, question, step, name } = props;
   return `
   <div class="roadmap__day-content roadmap__day-content${
-    id === 1 ? "--active" : ""
-  }" id="day${id}">
+    step === 5 ? "--active" : ""
+  }" id="day${step}">
+
   <h1 class="roadmap__title">${title}</h1>
-  ${description.map((paragraph: any) => `<p>${paragraph}</p>`).join("")}
-  <h2>${example.title}</h2>
-  ${example.description.map((paragraph: any) => `<p>${paragraph}</p>`).join("")}
+ <p>${description}</p>
+
+  <h2>${question.title}</h2>
+ <p>${question}</p>
+
   <form class="roadmap__form">
     <h2>Tu turno</h2>
-    <p>¿Cuál es tu ${keyword}?</p>
-    <textarea class="roadmap__input" id="${keyword}" name="${keyword}" rows="4" cols="50" data-question-id=${id}></textarea>
+    <p>¿Cuál es tu ${name}?</p>
+    <textarea class="roadmap__input" id="${name}" name="${name}" rows="4" cols="50" data-question-id=${step}></textarea>
     <button type="submit" class="roadmap__btn">Enviar</button>
   </form>
   </div>
   `;
 }
 
-const setSelectedDay = (
+const setSelectedStage = (
   element: HTMLElement,
   day: HTMLElement,
   enabledDays: Array<Element>
@@ -53,51 +66,92 @@ const setSelectedDay = (
   );
 };
 
-export function setupRoadmap(element: HTMLElement) {
-  element.innerHTML = roadmapMarkup;
+const getAIFeedback = async (promptValue: string) => {
+  const aiResponse = await fetch(AI_API_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      prompt: promptValue,
+    }),
+  });
+
+  const blobResponse = await aiResponse.blob();
+  const aiTextResponse = new TextDecoder("utf-8").decode(
+    await blobResponse.arrayBuffer()
+  );
+
+  const apiResponseParagraph = document.createElement("p");
+  apiResponseParagraph.classList.add("roadmap__ai-feedback");
+  apiResponseParagraph.innerHTML = aiTextResponse;
   const roadmapContentElement = document.querySelector(
     ".roadmap__content"
   ) as HTMLElement;
+  roadmapContentElement.appendChild(apiResponseParagraph);
+};
 
-  roadmapData.map((day) => {
-    roadmapContentElement.innerHTML += createRoadmapDay(day);
-  });
+const createTabsAnimation = (page: HTMLElement) => {
+  const roadmap = page.querySelector(".roadmap__container")! as HTMLDivElement;
+  const tabs = roadmap.querySelectorAll(".roadmap__day");
 
-  const roadmap = element.querySelector(".roadmap__container")!;
-  const days = roadmap.querySelectorAll(".roadmap__day");
-
-  const enabledDays = Array.from(days).filter((day) => {
-    return !day.classList.contains("roadmap__day--blocked");
-  });
-
-  enabledDays.forEach((day) => {
-    day.addEventListener("click", () =>
-      setSelectedDay(element, day as HTMLElement, enabledDays)
-    );
-  });
-
-  //Animate tabs with stagger
   inView(roadmap, () => {
     animate(
-      days,
+      tabs,
       { opacity: [0, 1], x: [-20, 0] },
       { duration: 2, delay: stagger(0.2) }
     );
   });
+};
 
-  const answerForms = element.querySelectorAll(".roadmap__form")!;
-  answerForms.forEach((form) => {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const textArea = form.querySelector("textarea") as HTMLTextAreaElement;
-      const userId = localStorage.getItem("userId");
-      const { data, error } = await addQuestionAnswer({
-        user: userId,
-        question: textArea.name,
-        answer: textArea.value,
-        day: textArea.dataset.questionId,
-      });
-      console.log(data, error);
-    });
+const addClickListenersOnTabs = (page: HTMLElement) => {
+  const roadmap = page.querySelector(".roadmap__container")! as HTMLDivElement;
+  const stages = roadmap.querySelectorAll(".roadmap__day");
+
+  const allowedStages = Array.from(stages).filter((stage) => {
+    return !stage.classList.contains("roadmap__day--blocked");
   });
-}
+
+  allowedStages.forEach((stage) => {
+    stage.addEventListener("click", () =>
+      setSelectedStage(page, stage as HTMLElement, allowedStages)
+    );
+  });
+};
+
+const populateRoadmap = (page: HTMLElement) => {
+  const roadmapContentElement = page.querySelector(
+    ".roadmap__content"
+  ) as HTMLElement;
+
+  const roadmapData = JSON.parse(localStorage.getItem("learningPath")!);
+  roadmapData.map((stage: roadmapStageType) => {
+    roadmapContentElement.innerHTML += createRoadmapStageContent(stage);
+  });
+};
+
+const addSubmitListenersOnForms = (page: HTMLElement) => {
+  const roadmapForms = page.querySelectorAll(".roadmap__form")!;
+  roadmapForms.forEach((form) =>
+    form.addEventListener("submit", (e) => {
+      handleFormSubmit(e, page);
+    })
+  );
+};
+
+const handleFormSubmit = async (e: Event, element: HTMLElement) => {
+  e.preventDefault();
+
+  const textArea = element.querySelector("textarea") as HTMLTextAreaElement;
+  const currentProjectId = localStorage.getItem("projectId");
+
+  const { error } = await addRoadmapStageResponse({
+    name: textArea.name,
+    response: textArea.value,
+    project: 75,
+  });
+
+  if (error) {
+    console.log(error);
+    return;
+  } else {
+    getAIFeedback(textArea.value);
+  }
+};

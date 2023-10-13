@@ -45,10 +45,10 @@ export const addProjectSurvey = async (survey: any) => {
   return { data, error };
 };
 
-export const addQuestionAnswer = async (questionAnswer: any) => {
+export const addRoadmapStageResponse = async (roadmapStage: any) => {
   const { data, error } = await supabase
-    .from("question-answer")
-    .insert(questionAnswer)
+    .from("roadmap_stage")
+    .insert(roadmapStage)
     .select();
   return { data, error };
 };
