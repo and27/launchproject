@@ -33,6 +33,7 @@ export const getUserInfoFromId = async (id: number) => {
 
 export const addProjectSurvey = async (survey: any) => {
   const surveyInfo = {
+    user: survey.user,
     idea: survey.idea,
     concept: survey.concept,
     mvp: survey.mvp,

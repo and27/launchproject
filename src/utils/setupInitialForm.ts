@@ -1,6 +1,7 @@
 import { basicQuestions } from "../data/initialSurveyQuestions";
-import { initialSurveyFormMarkup } from "../screens/initialSurveyFormMarkup";
 import { addProjectSurvey, loginWithGoogle } from "./supabase";
+import { initialSurveyFormMarkup } from "../screens/initialSurveyFormMarkup";
+import { generateLearningPath } from "./getRoadmapData";
 
 const inputMarkup = ({
   question,
@@ -24,24 +25,25 @@ const inputMarkup = ({
 </div>
 </fieldset>`;
 
-type formValues = {
+export type initialSurvey = {
   idea: boolean | null;
   concept: boolean | null;
   mvp: boolean | null;
   mvpLaunch: boolean | null;
 };
 
-export const setupForm = (element: HTMLElement) => {
+export const setupInitialForm = (element: HTMLElement) => {
   //only show form if there is no previous survey in localStorage
-  const surveyId = localStorage.getItem("surveyId");
-  if (surveyId) return;
+  const learningPath = localStorage.getItem("learningPath");
+  if (learningPath) return;
 
   element!.innerHTML = initialSurveyFormMarkup;
   const form = element.querySelector(".form__form") as HTMLFormElement;
   const formQuestions = element.querySelector(
     ".form__basic-questions"
   ) as HTMLFormElement;
-  basicQuestions.forEach((question) => {
+
+  basicQuestions.forEach((question: any) => {
     const questionMarkup = inputMarkup(question);
     formQuestions.innerHTML += questionMarkup;
   });
@@ -78,8 +80,30 @@ export const addFormListeners = (form: HTMLFormElement) => {
   button?.addEventListener("click", (e) => handleSubmit(e, selectedValues));
 };
 
-const handleSubmit = async (e: Event, selectedValues: formValues) => {
+const handleSubmit = async (e: Event, selectedValues: initialSurvey) => {
   e.preventDefault();
+
+  const saveSurveyAndGenerateRoadmap = async () => {
+    const userAnswers: initialSurvey = {
+      idea: selectedValues.idea,
+      concept: selectedValues.concept,
+      mvp: selectedValues.mvp,
+      mvpLaunch: selectedValues.mvpLaunch,
+    };
+
+    const dataToSend = {
+      user: userId,
+      ...userAnswers,
+      mvp_launch: userAnswers.mvpLaunch,
+    };
+    const { error } = await addProjectSurvey(dataToSend);
+
+    if (error) console.error(error);
+    else {
+      const path = generateLearningPath(userAnswers);
+      localStorage.setItem("learningPath", JSON.stringify(path));
+    }
+  };
 
   const isFormValid = Object.values(selectedValues).every(
     (value) => value !== null
@@ -92,30 +116,15 @@ const handleSubmit = async (e: Event, selectedValues: formValues) => {
 
   localStorage.setItem("formData", JSON.stringify(selectedValues));
   const userId = localStorage.getItem("userId");
-  loginWithGoogle();
 
-  const userAnswers = {
-    idea: selectedValues.idea,
-    concept: selectedValues.concept,
-    mvp: selectedValues.mvp,
-    mvpLaunch: selectedValues.mvpLaunch,
-  };
-
-  const dataToSend = {
-    user: userId,
-    ...userAnswers,
-    mvp_launch: userAnswers.mvpLaunch,
-  };
-
-  const { data, error } = await addProjectSurvey(dataToSend);
-
-  if (error) console.error(error);
+  if (userId) saveSurveyAndGenerateRoadmap();
   else {
-    localStorage.setItem("surveyId", data?.[0].id as string);
+    const { error } = await loginWithGoogle();
+    if (!error) saveSurveyAndGenerateRoadmap();
   }
 };
 
-const selectedValues: formValues = {
+const selectedValues: initialSurvey = {
   idea: null,
   concept: null,
   mvp: null,

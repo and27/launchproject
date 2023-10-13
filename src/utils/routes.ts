@@ -1,4 +1,4 @@
-import { setupForm } from "./form";
+import { setupInitialForm } from "./setupInitialForm";
 import { setupLottie } from "./lottie";
 import { Router } from "../routes/router";
 import { setupRoadmap } from "../roadmap";
@@ -10,12 +10,12 @@ export const goToHome = () => {
 };
 
 export const goToProfile = () => {
-  const surveyId = localStorage.getItem("surveyId");
+  const learningPath = localStorage.getItem("learningPath");
   const userId = localStorage.getItem("userId");
 
-  if (!surveyId) {
+  if (!learningPath) {
     Router("start");
-    setupForm(document.querySelector<HTMLFormElement>("#app")!);
+    setupInitialForm(document.querySelector<HTMLFormElement>("#app")!);
   } else if (!userId) {
     loginWithGoogle();
   } else {
