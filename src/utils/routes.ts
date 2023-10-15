@@ -9,7 +9,7 @@ export const goToHome = () => {
   setupLottie(document.querySelector<HTMLDivElement>("#lottie")!);
 };
 
-export const goToProfile = () => {
+export const goToRoadmap = () => {
   const learningPath = localStorage.getItem("learningPath");
   const userId = localStorage.getItem("userId");
 
@@ -19,7 +19,7 @@ export const goToProfile = () => {
   } else if (!userId) {
     loginWithGoogle();
   } else {
-    Router("profile");
+    Router("roadmap");
     setupRoadmap(document.querySelector<HTMLElement>("#app")!);
   }
 };
@@ -27,6 +27,6 @@ export const goToProfile = () => {
 export function setupRoutes(element: HTMLElement) {
   const startBtn = element.querySelector(".header__button");
   startBtn?.addEventListener("click", () => {
-    goToProfile();
+    goToRoadmap();
   });
 }
