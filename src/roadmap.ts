@@ -15,9 +15,11 @@ export function setupRoadmap(page: HTMLElement) {
 
 function createRoadmapStageContent(props: any) {
   const { title, description, question, step, name } = props;
+  //TODO fix this and use the corresponding stage derived from initial survey
+  const FIRST_STAGE = 8;
   return `
   <div class="roadmap__day-content roadmap__day-content${
-    step === 5 ? "--active" : ""
+    step === FIRST_STAGE ? "--active" : ""
   }" id="day${step}">
 
   <h1 class="roadmap__title">${title}</h1>
@@ -140,7 +142,7 @@ const handleFormSubmit = async (e: Event, element: HTMLElement) => {
   e.preventDefault();
 
   const textArea = element.querySelector("textarea") as HTMLTextAreaElement;
-  const currentProjectId = localStorage.getItem("projectId");
+  // const currentProjectId = localStorage.getItem("projectId");
 
   const { error } = await addRoadmapStageResponse({
     name: textArea.name,

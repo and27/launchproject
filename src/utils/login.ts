@@ -1,16 +1,20 @@
 import { AuthChangeEvent, Session } from "@supabase/supabase-js";
 import { loginWithGoogle, supabase } from "./supabase";
-import { goToHome, goToProfile } from "./routes";
+import { goToHome, goToRoadmap } from "./routes";
+import { closeDropdown } from "../components/dropdown";
 
 const handleLogin = async () => {
   await loginWithGoogle();
 };
 
-const handleLogout = async () => {
+export const handleLogout = async (e: Event) => {
+  e.stopPropagation();
   await supabase.auth.signOut();
+  closeDropdown();
 };
 
-export const toggleDropdown = () => {
+export const toggleDropdown = (e: Event) => {
+  e.stopPropagation();
   const userId = localStorage.getItem("userId");
   let dropdown = document.getElementById("userDropdown");
   if (userId) {
@@ -20,10 +24,13 @@ export const toggleDropdown = () => {
   }
 };
 
-export async function setupLogin(loginButton: HTMLElement) {
-  loginButton.addEventListener("click", () => toggleDropdown());
+export async function setupLogin(dropdown: HTMLElement) {
+  const loginButton = dropdown.querySelector(
+    "#loginButton"
+  )! as HTMLButtonElement;
 
-  const logoutButton = document.querySelector(".dropdown-content:last-child");
+  loginButton.addEventListener("click", toggleDropdown);
+  const logoutButton = document.querySelector(".dropdown-content>a:last-child");
   logoutButton?.addEventListener("click", handleLogout);
 
   const supabaseListener = () => {
@@ -34,7 +41,7 @@ export async function setupLogin(loginButton: HTMLElement) {
           userId && localStorage.setItem("userId", userId as string);
           const parsedEmail = session?.user?.email?.split("@")[0];
           loginButton.innerHTML = `${parsedEmail}`;
-          goToProfile();
+          goToRoadmap();
         }
 
         if (event == "SIGNED_OUT") {
