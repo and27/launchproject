@@ -18,17 +18,17 @@ export const homeMarkup = `
       <p class="main__text">Launch is your essential partner in turning that spark of an idea into a market-ready product or service. No prior experience needed; all you need is a vision, and we provide the roadmap.</p>
       <div class="main__benefits-container">
         <div class="main__benefit">
-          <img class="main__benefit-img" src="/public/ideasPink.jpg"/>
+          <img class="main__benefit-img" src="ideasPink.jpg"/>
           <h3 class="main__benefit-title">Find Your Idea</h3>
           <p class="main__benefit-description">Turn your thoughts and inspirations into a clear, viable idea. No matter how big or small, this is where it all starts.</p>
         </div>
         <div class="main__benefit">
-        <img class="main__benefit-img" src="/public/booksPink.jpg"/>
+        <img class="main__benefit-img" src="booksPink.jpg"/>
         <h3 class="main__benefit-title">Build Your Vision</h3>
           <p class="main__benefit-description">With tools and guidance at your fingertips, shape and model your idea. It's time to give it form and get it ready for the world.</p>
         </div>
         <div class="main__benefit">
-        <img class="main__benefit-img" src="/public/rocketPink.jpg"/>
+        <img class="main__benefit-img" src="rocketPink.jpg"/>
         <h3 class="main__benefit-title">Make It Real</h3>
           <p class="main__benefit-description">With our support, take your idea to the market. Whether it's a product, a service, or a solution, we're here to help you launch it successfully.</p>
         </div>
