@@ -511,3 +511,38 @@ fieldset label:focus-within {
 .show {
   display: block;
 }
+
+/* profile */
+.profile__projects-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1em;
+  padding-block: var(--spacing-xlarge);
+}
+
+.profile__projects-card {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  border-radius: 8px;
+  box-shadow: 2px 3px #000;
+  background-color: #1a1a1a;
+}
+
+.profile__projects-img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  height: 100px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile__projects-title {
+  margin-inline: var(--spacing-medium);
+  margin-block: var(--spacing-medium);
+  font-weight: 700;
+}
