@@ -8,29 +8,56 @@ const AI_API_URL = "https://launch-nlp.vercel.app/api/completion";
 export function setupRoadmap(page: HTMLElement) {
   page.innerHTML = roadmapMarkup;
   populateRoadmap(page);
+  populateTabs(page);
   addClickListenersOnTabs(page);
   createTabsAnimation(page);
   addSubmitListenersOnForms(page);
 }
 
+const tabsWrapper = (children: any) => {
+  return `
+  <div class="roadmap__day-wrapper">
+  ${children}
+  <div id="tooltip-2" role="tooltip">
+    Complete the previous stages first
+  </div>
+</div>`;
+};
+
+const createTabs = (props: any) => {
+  const { step, title, active, blocked, idx } = props;
+  const tab = `
+  <li class="roadmap__day roadmap__day${
+    active ? "--active" : blocked ? "--blocked" : ""
+  }" aria-controls="stage${step}">${idx} ${title}</li>
+  `;
+  return blocked ? tabsWrapper(tab) : tab;
+};
+
 function createRoadmapStageContent(props: any) {
-  const { title, description, question, step, name } = props;
+  const { title, description, question, instructions, step, name, video, idx } =
+    props;
   //TODO fix this and use the corresponding stage derived from initial survey
-  const FIRST_STAGE = 8;
+  const FIRST_STAGE = 0;
   return `
   <div class="roadmap__day-content roadmap__day-content${
-    step === FIRST_STAGE ? "--active" : ""
-  }" id="day${step}">
+    idx === FIRST_STAGE ? "--active" : ""
+  }" id="stage${step}">
 
   <h1 class="roadmap__title">${title}</h1>
  <p>${description}</p>
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/${video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-  <h2>${question.title}</h2>
- <p>${question}</p>
+  <h2>Instructions</h2>
+  <ol class="roadmap__instructions">
+  ${instructions
+    .map((instruction: string) => `<li>${instruction}</li>`)
+    .join("")}
+  </ol>
 
   <form class="roadmap__form">
-    <h2>Tu turno</h2>
-    <p>¿Cuál es tu ${name}?</p>
+    <h2>Your turn</h2>
+    <p>${question}</p>
     <textarea class="roadmap__input" id="${name}" name="${name}" rows="4" cols="50" data-question-id=${step}></textarea>
     <button type="submit" class="roadmap__btn">Enviar</button>
   </form>
@@ -45,10 +72,8 @@ const setSelectedStage = (
 ) => {
   const roadmap = element.querySelector(".roadmap__container")!;
   const dayContents = roadmap.querySelectorAll(".roadmap__day-content");
-
   enabledDays.forEach((day) => day.classList.remove("roadmap__day--active"));
   day.classList.add("roadmap__day--active");
-
   dayContents.forEach((dayContent) => {
     dayContent.classList.remove("roadmap__day-content--active");
   });
@@ -56,8 +81,10 @@ const setSelectedStage = (
   const currentDayContent = roadmap.querySelector(
     `#${day.getAttribute("aria-controls")}`
   );
+
   if (!currentDayContent) return;
   currentDayContent.classList.add("roadmap__day-content--active");
+
   animate(
     currentDayContent,
     {
@@ -124,8 +151,26 @@ const populateRoadmap = (page: HTMLElement) => {
   ) as HTMLElement;
 
   const roadmapData = JSON.parse(localStorage.getItem("learningPath")!);
-  roadmapData.map((stage: roadmapStageType) => {
-    roadmapContentElement.innerHTML += createRoadmapStageContent(stage);
+  roadmapData.map((stage: roadmapStageType, idx: number) => {
+    roadmapContentElement.innerHTML += createRoadmapStageContent({
+      ...stage,
+      idx,
+    });
+  });
+};
+
+const populateTabs = (page: HTMLElement) => {
+  const roadmap = page.querySelector(".roadmap__container")! as HTMLDivElement;
+  const tabs = roadmap.querySelector(".roadmap__days")! as HTMLDivElement;
+
+  const roadmapData = JSON.parse(localStorage.getItem("learningPath")!);
+  roadmapData.map((stage: roadmapStageType, idx: number) => {
+    tabs.innerHTML += createTabs({
+      ...stage,
+      active: idx === 0,
+      blocked: idx > 2,
+      idx: idx + 1,
+    });
   });
 };
 
