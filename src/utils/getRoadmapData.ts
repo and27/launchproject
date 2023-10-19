@@ -2,24 +2,25 @@ import { roadmapStages } from "../data/roadmapStages";
 import { initialSurvey } from "./setupInitialForm";
 
 const getInitialStep = (questionnaire: initialSurvey): string => {
-  const learningPathEntryLevels = [
-    "ideas",
-    "concept",
-    "mvp",
-    "validation",
-    "adaptation",
-    "marketing",
-  ];
+  const learningPathEntryLevels: any = {
+    idea: "idea",
+    concept: "concept",
+    mvp: "mvp",
+    validation: "validation",
+    adaptation: "adaptation",
+    marketing: "marketing",
+  };
 
-  let initialStep = "ideas";
+  let initialStep = "idea";
   const keys = Object.keys(questionnaire);
   const orderedKeys = keys.sort((a, b) => {
-    return keys.indexOf(a) - keys.indexOf(b);
+    return keys.indexOf(b) - keys.indexOf(a);
   });
 
-  orderedKeys.forEach((questionEntry, index) => {
+  orderedKeys.forEach((questionEntry) => {
     if (questionnaire[questionEntry as keyof initialSurvey] === false) {
-      initialStep = learningPathEntryLevels[index];
+      initialStep =
+        learningPathEntryLevels[questionEntry as keyof initialSurvey];
     }
   });
   return initialStep;
