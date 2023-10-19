@@ -154,11 +154,11 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: calc(100vh - 100px);
   padding-block-end: var(--spacing-large);
   margin-block-start: 0;
 
   @media (min-width: 768px) {
+    height: calc(100vh - 100px);
     flex-direction: row;
     padding-block-end: var(--spacing-xxlarge);
   }
@@ -232,13 +232,22 @@ a.header__button--outline {
 .roadmap__container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: flex-start;
-  gap: 6em;
 
   @media (min-width: 768px) {
     flex-direction: row;
+    align-items: flex-start;
+    gap: 3em;
   }
+
+  @media (min-width: 1024px) {
+    gap: 6em;
+  }
+}
+
+.roadmap__side {
+  margin-block-end: var(--spacing-large);
+  inline-size: 100%;
 }
 
 .roadmap__content {
@@ -247,7 +256,7 @@ a.header__button--outline {
   flex-grow: 1;
 
   @media (min-width: 768px) {
-    flex-basis: 50%;
+    flex-basis: 65%;
     flex-shrink: 0;
     flex-grow: 1;
   }
@@ -416,7 +425,7 @@ textarea {
   color: #000;
   border: none;
   border-radius: 8px;
-  padding: 1em;
+  padding-block: 1em;
 }
 
 fieldset label {
