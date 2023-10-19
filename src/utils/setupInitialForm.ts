@@ -2,6 +2,7 @@ import { basicQuestions } from "../data/initialSurveyQuestions";
 import { addProjectSurvey, loginWithGoogle } from "./supabase";
 import { initialSurveyFormMarkup } from "../screens/initialSurveyFormMarkup";
 import { generateLearningPath } from "./getRoadmapData";
+import { goToRoadmap } from "./routes";
 
 const inputMarkup = ({
   question,
@@ -102,6 +103,7 @@ const handleSubmit = async (e: Event, selectedValues: initialSurvey) => {
     else {
       const path = generateLearningPath(userAnswers);
       localStorage.setItem("learningPath", JSON.stringify(path));
+      goToRoadmap();
     }
   };
 

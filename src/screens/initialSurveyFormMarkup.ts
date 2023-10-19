@@ -7,7 +7,7 @@ export const initialSurveyFormMarkup = `
     <div>
       <form class="form__form">
         <div class="form__basic-questions"></div>
-        <p>¿Cuál es tu idea?</p>
+        <p>Crea un nombre para tu nuevo proyecto</p>
         <textarea id="idea"></textarea>
         <button class="form__button">Continuar</button>
       </form>
