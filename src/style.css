@@ -128,7 +128,7 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #213547;
   }
 }
 
@@ -283,7 +283,7 @@ a.header__button--outline {
   padding: 0;
 }
 
-.roadmap__day {
+.roadmap__stage {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.6em;
@@ -293,9 +293,17 @@ a.header__button--outline {
   border-color: #1a1a1a;
   cursor: pointer;
   box-shadow: 2px 3px #1a1a1a;
+  background-color: #212121;
+  inline-size: 100%;
+  text-align: left;
 }
 
-.roadmap__day--active {
+.roadmap__stage:hover {
+  border-color: #1a1a1a;
+  background-color: #1a1a1a;
+}
+
+.roadmap__stage--active {
   color: #fff;
   background-color: #1a1a1a;
   box-shadow: 2px 3px #000;

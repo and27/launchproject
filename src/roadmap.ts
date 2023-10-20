@@ -12,6 +12,7 @@ export function setupRoadmap(page: HTMLElement) {
   addClickListenersOnTabs(page);
   createTabsAnimation(page);
   addSubmitListenersOnForms(page);
+  document.addEventListener("keydown", keyboardNavigation);
 }
 
 const tabsWrapper = (children: any) => {
@@ -27,9 +28,11 @@ const tabsWrapper = (children: any) => {
 const createTabs = (props: any) => {
   const { step, title, active, blocked, idx } = props;
   const tab = `
-  <li class="roadmap__day roadmap__day${
+  <button id="tab${step}" class="roadmap__stage roadmap__stage${
     active ? "--active" : blocked ? "--blocked" : ""
-  }" aria-controls="stage${step}">${idx} ${title}</li>
+  }" aria-controls="stage${step}" type="button" role="tab" tabindex="${
+    active ? 0 : "-1"
+  }">${idx} ${title}</button>
   `;
   return blocked ? tabsWrapper(tab) : tab;
 };
@@ -37,14 +40,13 @@ const createTabs = (props: any) => {
 function createRoadmapStageContent(props: any) {
   const { title, description, question, instructions, step, name, video, idx } =
     props;
-  //TODO fix this and use the corresponding stage derived from initial survey
-  const FIRST_STAGE = 0;
+  const DEFAULT_SELECTED_STAGE = 0;
   return `
   <div class="roadmap__day-content roadmap__day-content${
-    idx === FIRST_STAGE ? "--active" : ""
-  }" id="stage${step}">
+    idx === DEFAULT_SELECTED_STAGE ? "--active" : ""
+  }" id="stage${step}" role="tabpanel"  aria-labelledby="tab${step}">
 
-  <h1 class="roadmap__title">${title}</h1>
+ <h1 class="roadmap__title">${title}</h1>
  <p>${description}</p>
  <iframe width="560" height="315" src="https://www.youtube.com/embed/${video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -66,16 +68,23 @@ function createRoadmapStageContent(props: any) {
 }
 
 const setSelectedStage = (
-  element: HTMLElement,
+  roadmap: HTMLElement,
   day: HTMLElement,
   enabledDays: Array<Element>
 ) => {
-  const roadmap = element.querySelector(".roadmap__container")!;
   const dayContents = roadmap.querySelectorAll(".roadmap__day-content");
-  enabledDays.forEach((day) => day.classList.remove("roadmap__day--active"));
-  day.classList.add("roadmap__day--active");
+  enabledDays.forEach((day) => {
+    day.classList.remove("roadmap__stage--active");
+    day.setAttribute("aria-selected", "false");
+    day.setAttribute("tabindex", "-1");
+  });
+  day.classList.add("roadmap__stage--active");
+  day.setAttribute("aria-selected", "true");
+  day.setAttribute("tabindex", "0");
+
   dayContents.forEach((dayContent) => {
     dayContent.classList.remove("roadmap__day-content--active");
+    dayContent.removeAttribute("hidden");
   });
 
   const currentDayContent = roadmap.querySelector(
@@ -84,6 +93,7 @@ const setSelectedStage = (
 
   if (!currentDayContent) return;
   currentDayContent.classList.add("roadmap__day-content--active");
+  currentDayContent.setAttribute("hidden", "false");
 
   animate(
     currentDayContent,
@@ -119,7 +129,7 @@ const getAIFeedback = async (promptValue: string) => {
 
 const createTabsAnimation = (page: HTMLElement) => {
   const roadmap = page.querySelector(".roadmap__container")! as HTMLDivElement;
-  const tabs = roadmap.querySelectorAll(".roadmap__day");
+  const tabs = roadmap.querySelectorAll(".roadmap__stage");
 
   inView(roadmap, () => {
     animate(
@@ -132,17 +142,48 @@ const createTabsAnimation = (page: HTMLElement) => {
 
 const addClickListenersOnTabs = (page: HTMLElement) => {
   const roadmap = page.querySelector(".roadmap__container")! as HTMLDivElement;
-  const stages = roadmap.querySelectorAll(".roadmap__day");
+  const stages = roadmap.querySelectorAll(".roadmap__stage");
 
   const allowedStages = Array.from(stages).filter((stage) => {
-    return !stage.classList.contains("roadmap__day--blocked");
+    return !stage.classList.contains("roadmap__stage--blocked");
   });
 
   allowedStages.forEach((stage) => {
     stage.addEventListener("click", () =>
-      setSelectedStage(page, stage as HTMLElement, allowedStages)
+      setSelectedStage(roadmap, stage as HTMLElement, allowedStages)
     );
   });
+};
+
+const keyboardNavigation = (e: KeyboardEvent) => {
+  const roadmap = document.querySelector(
+    ".roadmap__container"
+  )! as HTMLDivElement;
+  const stages = roadmap.querySelectorAll(".roadmap__stage");
+  const allowedStages = Array.from(stages).filter((stage) => {
+    return !stage.classList.contains("roadmap__stage--blocked");
+  });
+
+  const currentStage = document.activeElement;
+  const currentStageIdx = allowedStages.indexOf(currentStage as Element);
+
+  if (e.key === "ArrowDown") {
+    e.preventDefault();
+    const nextStage = allowedStages[
+      (currentStageIdx + 1) % allowedStages.length
+    ] as HTMLElement;
+    nextStage?.focus();
+    setSelectedStage(roadmap, nextStage, allowedStages);
+  }
+
+  if (e.key === "ArrowUp") {
+    e.preventDefault();
+    const prevStage = allowedStages[
+      (currentStageIdx - 1 + allowedStages.length) % allowedStages.length
+    ] as HTMLElement;
+    prevStage?.focus();
+    setSelectedStage(roadmap, prevStage, allowedStages);
+  }
 };
 
 const populateRoadmap = (page: HTMLElement) => {
