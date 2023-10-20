@@ -1,4 +1,3 @@
-import { Router } from "../routes/router";
 import { handleLogout, toggleDropdown } from "../utils/login";
 import { gotoProfile } from "../utils/routes";
 

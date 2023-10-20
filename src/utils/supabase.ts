@@ -4,13 +4,6 @@ export const supabase = createClient(
   "https://cuwenkgbvcblrwwvirup.supabase.co",
   import.meta.env.VITE_SUPA as string
 );
-export const login = async () => {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: "andro@gmail.com",
-    password: "qetadg77Y",
-  });
-  return { data, error };
-};
 
 export const loginWithGoogle = async () => {
   const { data, error } = await supabase.auth.signInWithOAuth({
@@ -28,6 +21,14 @@ export const loginWithGoogle = async () => {
 
 export const getUserInfoFromId = async (id: number) => {
   const { data, error } = await supabase.from("user").select().eq("userid", id);
+  return { data, error };
+};
+
+export const addProject = async (project: any) => {
+  const { data, error } = await supabase
+    .from("project")
+    .insert(project)
+    .select();
   return { data, error };
 };
 

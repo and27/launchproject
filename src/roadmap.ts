@@ -228,12 +228,12 @@ const handleFormSubmit = async (e: Event, element: HTMLElement) => {
   e.preventDefault();
 
   const textArea = element.querySelector("textarea") as HTMLTextAreaElement;
-  // const currentProjectId = localStorage.getItem("projectId");
+  const currentProjectId = localStorage.getItem("projectId");
 
   const { error } = await addRoadmapStageResponse({
     name: textArea.name,
     response: textArea.value,
-    project: 75,
+    project: currentProjectId,
   });
 
   if (error) {

@@ -1,5 +1,5 @@
 import { basicQuestions } from "../data/initialSurveyQuestions";
-import { addProjectSurvey, loginWithGoogle } from "./supabase";
+import { addProject, addProjectSurvey, loginWithGoogle } from "./supabase";
 import { initialSurveyFormMarkup } from "../screens/initialSurveyFormMarkup";
 import { generateLearningPath } from "./getRoadmapData";
 import { goToRoadmap } from "./routes";
@@ -92,17 +92,28 @@ const handleSubmit = async (e: Event, selectedValues: initialSurvey) => {
       mvpLaunch: selectedValues.mvpLaunch,
     };
 
+    const projectName = selectedValues.idea ? "My Project" : "My Startup";
+    const userId = localStorage.getItem("userId");
+
     const dataToSend = {
       user: userId,
       ...userAnswers,
       mvp_launch: userAnswers.mvpLaunch,
     };
+    const { error: projectError, data: projectData } = await addProject({
+      name: projectName,
+      user_id: userId,
+    });
+
     const { error } = await addProjectSurvey(dataToSend);
 
+    if (projectError) console.error(projectError);
     if (error) console.error(error);
     else {
+      const projectId = projectData![0].id;
       const path = generateLearningPath(userAnswers);
       localStorage.setItem("learningPath", JSON.stringify(path));
+      localStorage.setItem("projectId", projectId.toString());
       goToRoadmap();
     }
   };
