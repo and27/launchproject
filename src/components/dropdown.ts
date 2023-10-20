@@ -1,5 +1,6 @@
 import { Router } from "../routes/router";
 import { handleLogout, toggleDropdown } from "../utils/login";
+import { gotoProfile } from "../utils/routes";
 
 const dropdownMarkup = `
   <button id="loginButton" class="navigation__button--outline">Login</button>
@@ -35,7 +36,7 @@ export const handleDropdownClose = () => {
 const handleProfile = (e: Event) => {
   e.stopPropagation();
   closeDropdown();
-  Router("profile");
+  gotoProfile();
 };
 
 const addDropdownListeners = () => {

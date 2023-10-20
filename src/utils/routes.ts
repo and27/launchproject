@@ -3,6 +3,7 @@ import { setupLottie } from "./lottie";
 import { Router } from "../routes/router";
 import { setupRoadmap } from "../roadmap";
 import { loginWithGoogle } from "./supabase";
+import { setupProfile } from "./setupProfile";
 
 export const goToHome = () => {
   Router("home");
@@ -22,6 +23,11 @@ export const goToRoadmap = () => {
     Router("roadmap");
     setupRoadmap(document.querySelector<HTMLElement>("#app")!);
   }
+};
+
+export const gotoProfile = () => {
+  Router("profile");
+  setupProfile(document.querySelector<HTMLElement>("#app")!);
 };
 
 export function setupRoutes(element: HTMLElement) {
