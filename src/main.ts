@@ -1,5 +1,5 @@
 import "./style.css";
-import { setupLottie } from "./utils/lottie.ts";
+import { setupLottie } from "./utils/setupLottie.ts";
 import { setupLogin } from "./utils/login.ts";
 import { setupRoutes } from "./utils/routes.ts";
 import { homeMarkup } from "./screens/homeMarkup.ts";
@@ -11,4 +11,4 @@ setupRoutes(document.querySelector<HTMLDivElement>("#app")!);
 setupLottie(document.querySelector<HTMLDivElement>("#lottie")!);
 setupDropdown(document.querySelector<HTMLDivElement>(".dropdown")!);
 setupLogin(document.querySelector<HTMLButtonElement>(".dropdown")!);
-setupLogo(document.querySelector<HTMLButtonElement>("#app")!);
+setupLogo();

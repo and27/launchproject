@@ -1,6 +1,6 @@
 import { logoSVG } from "../components/logoSVG";
 
-export const setupLogo = (element: HTMLElement) => {
-  const logo = element.querySelector(".logo");
+export const setupLogo = () => {
+  const logo = document.querySelector(".logo");
   if (logo) logo.innerHTML = logoSVG;
 };

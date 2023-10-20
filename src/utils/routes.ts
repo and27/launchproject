@@ -1,5 +1,5 @@
 import { setupInitialForm } from "./setupInitialForm";
-import { setupLottie } from "./lottie";
+import { setupLottie } from "./setupLottie";
 import { Router } from "../routes/router";
 import { setupRoadmap } from "../roadmap";
 import { loginWithGoogle } from "./supabase";
