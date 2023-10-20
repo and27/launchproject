@@ -49,6 +49,47 @@ body {
   margin: 0 auto;
 }
 
+.logo svg {
+  width: 25px;
+}
+.logo:hover {
+  svg {
+    animation: slideOutAndIn 2.2s ease-in;
+    animation-delay: 0.3s;
+  }
+
+  #fire {
+    animation: fire 0.5s ease-in forwards;
+  }
+}
+
+@keyframes fire {
+  100% {
+    fill: red;
+  }
+}
+
+@keyframes slideOutAndIn {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+
+  51% {
+    transform: translateY(80px);
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .container {
   margin-inline: 2em;
 
