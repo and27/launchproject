@@ -52,6 +52,7 @@ body {
 .logo svg {
   width: 25px;
 }
+
 .logo:hover {
   svg {
     animation: slideOutAndIn 2.2s ease-in;
@@ -65,7 +66,7 @@ body {
 
 @keyframes fire {
   100% {
-    fill: red;
+    fill: #e85964;
   }
 }
 
@@ -75,12 +76,12 @@ body {
     opacity: 1;
   }
 
-  50% {
+  65% {
     transform: translateY(-200px);
     opacity: 0;
   }
 
-  51% {
+  66% {
     transform: translateY(80px);
   }
 
@@ -91,14 +92,14 @@ body {
 }
 
 .container {
-  margin-inline: 2em;
+  margin-inline: var(--spacing-medium);
 
   @media (min-width: 768px) {
-    margin-inline: 4em;
+    margin-inline: var(--spacing-large);
   }
 
   @media (min-width: 1024px) {
-    margin-inline: 6em;
+    margin-inline: var(--spacing-xxlarge);
   }
 }
 
@@ -107,13 +108,29 @@ section {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.4em;
   line-height: 1.1;
+
+  @media (min-width: 768px) {
+    font-size: 2.8em;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 3.2em;
+  }
 }
 
 h2 {
-  font-size: 2.4em;
+  font-size: 1.8em;
   line-height: 1.1;
+
+  @media (min-width: 768px) {
+    font-size: 2em;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 2.2em;
+  }
 }
 
 .logo {
@@ -123,12 +140,12 @@ h2 {
   transition: filter 300ms;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.logo #body {
+  fill: #ccc;
 }
 
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
+.logo #fire {
+  fill: #666;
 }
 
 .card {
@@ -170,24 +187,59 @@ button:focus-visible {
   }
   button {
     background-color: #213547;
+    color: #fff;
+  }
+
+  button:hover {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .logo #body {
+    fill: #213547;
+  }
+
+  .logo #fire {
+    fill: #213547;
+  }
+
+  textarea.roadmap__input {
+    background-color: #ccc;
+    color: #000;
+  }
+
+  div.main__benefit {
+    background-color: #fff;
+    color: #000;
+    box-shadow: 2px 3px #ccc;
+  }
+
+  div.profile__projects-card {
+    background-color: #fff;
+    color: #000;
+    box-shadow: 2px 3px #ccc;
+  }
+
+  button.dropdown__option:hover {
+    background-color: #ddd;
+    color: black;
   }
 }
 
 .navigation {
   display: flex;
-  margin-top: 2em;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 32px;
-
-  padding-inline: 2em;
+  margin-top: var(--spacing-medium);
+  padding-inline: var(--spacing-medium);
 
   @media (min-width: 768px) {
-    padding-inline: 4em;
+    padding-inline: var(--spacing-large);
   }
 
   @media (min-width: 1024px) {
-    padding-inline: 6em;
+    padding-inline: var(--spacing-xxlarge);
   }
 }
 
@@ -384,7 +436,11 @@ a.header__button--outline {
 .roadmap__input {
   background-color: #1a1a1a;
   color: rgba(255, 255, 255, 0.87);
-  border: 1px solid white;
+  margin-block-end: 1em;
+  display: block;
+  border: none;
+  border-radius: 8px;
+  padding-block: 1em;
 }
 
 .roadmap__btn {
@@ -466,17 +522,6 @@ a.header__button--outline {
   padding: 0;
 }
 
-textarea {
-  margin-block-end: 1em;
-  display: block;
-  min-width: 100%;
-  background-color: #ccc;
-  color: #000;
-  border: none;
-  border-radius: 8px;
-  padding-block: 1em;
-}
-
 fieldset label {
   padding: 1em;
   border-width: 2px;
@@ -521,10 +566,6 @@ fieldset label:focus-within {
 
 .footer__logo {
   height: 30px;
-}
-
-.logo {
-  height: 50px;
 }
 
 .navigation__button--outline {
@@ -577,6 +618,7 @@ fieldset label:focus-within {
   justify-content: flex-start;
   gap: 1em;
   padding-block: var(--spacing-xlarge);
+  cursor: pointer;
 }
 
 .profile__projects-card {
