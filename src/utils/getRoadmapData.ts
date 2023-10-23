@@ -1,5 +1,5 @@
 import { roadmapStages } from "../data/roadmapStages";
-import { initialSurvey } from "./setupInitialForm";
+import { initialSurvey } from "../types/form";
 
 const getInitialStep = (questionnaire: initialSurvey): string => {
   const learningPathEntryLevels: any = {

@@ -2,6 +2,7 @@ import { animate, inView, stagger } from "motion";
 import { addRoadmapStageResponse } from "./utils/supabase";
 import { roadmapMarkup } from "./screens/roadmapMarkup";
 import { roadmapStageType } from "./data/roadmapStages";
+import { ITabsProps } from "./types/roadmap";
 
 const AI_API_URL = "https://launch-nlp.vercel.app/api/completion";
 
@@ -15,6 +16,8 @@ export function setupRoadmap(page: HTMLElement) {
   document.addEventListener("keydown", keyboardNavigation);
 }
 
+//this wrapper is needed to add the tooltip to the blocked tabs
+//todo: add block icon to the blocked tabs
 const tabsWrapper = (children: any) => {
   return `
   <div class="roadmap__day-wrapper">
@@ -25,11 +28,13 @@ const tabsWrapper = (children: any) => {
 </div>`;
 };
 
-const createTabs = (props: any) => {
+const createTabs = (props: ITabsProps) => {
   const { step, title, active, blocked, idx } = props;
+  const blockedClass = blocked ? "roadmap__stage--blocked" : "";
+  const activeClass = active ? "roadmap__stage--active" : "";
+
   const tab = `
-  <button id="tab${step}" class="roadmap__stage roadmap__stage${
-    active ? "--active" : blocked ? "--blocked" : ""
+  <button id="tab${step}" class="roadmap__stage ${blockedClass} ${activeClass}
   }" aria-controls="stage${step}" type="button" role="tab" tabindex="${
     active ? 0 : "-1"
   }">${idx} ${title}</button>

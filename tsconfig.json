@@ -19,5 +19,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "sw.js"]
+  "include": ["src", "sw.js", "public/sw.js"]
 }

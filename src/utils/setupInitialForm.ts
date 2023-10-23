@@ -3,15 +3,10 @@ import { addProject, addProjectSurvey, loginWithGoogle } from "./supabase";
 import { initialSurveyFormMarkup } from "../screens/initialSurveyFormMarkup";
 import { generateLearningPath } from "./getRoadmapData";
 import { goToRoadmap } from "./routes";
+import { Question, initialSurvey } from "../types/form";
 
-const inputMarkup = ({
-  question,
-  questionId,
-}: {
-  question: string;
-  questionId: string;
-}) => `
-<fieldset class="form__question-container" aria-required="true" aria-invalid="true" role="radiogroup" id=${questionId}>
+const inputMarkup = ({ question, questionId }: Question) => `
+<fieldset class="form__question-container" aria-required="true" aria-invalid="false" role="radiogroup" id=${questionId}>
 <legend>
   ${question}
   <span>Required</span>
@@ -26,13 +21,6 @@ const inputMarkup = ({
 </div>
 <p class="form__radio-error" role="alert"></p>
 </fieldset>`;
-
-export type initialSurvey = {
-  idea: boolean | null;
-  concept: boolean | null;
-  mvp: boolean | null;
-  mvpLaunch: boolean | null;
-};
 
 export const setupInitialForm = (element: HTMLElement) => {
   //only show form if there is no previous survey
