@@ -3,6 +3,7 @@ export const logoSVG = `
    viewBox="0 0 80.665131 137.14079"
    id="svg5"
 >  
+   <title>Logo redirects to homepage</title>
   <defs
      id="defs2" />
   <g

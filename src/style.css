@@ -547,6 +547,19 @@ fieldset label:focus-within {
   gap: 16px;
 }
 
+.form__project-name {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+  margin-block-end: var(--spacing-large);
+}
+
+.form__project-input {
+  border-radius: 8px;
+  padding: 1em;
+  border: none;
+}
+
 /* footer */
 .footer__container {
   display: flex;

@@ -24,6 +24,7 @@ const inputMarkup = ({
     <input type="radio" name="${questionId}" id="val2" value="no" />
     No </label>
 </div>
+<p class="form__radio-error" role="alert"></p>
 </fieldset>`;
 
 export type initialSurvey = {
@@ -34,7 +35,7 @@ export type initialSurvey = {
 };
 
 export const setupInitialForm = (element: HTMLElement) => {
-  //only show form if there is no previous survey in localStorage
+  //only show form if there is no previous survey
   const learningPath = localStorage.getItem("learningPath");
   if (learningPath) return;
 
@@ -83,6 +84,7 @@ export const addFormListeners = (form: HTMLFormElement) => {
 
 const handleSubmit = async (e: Event, selectedValues: initialSurvey) => {
   e.preventDefault();
+  const errorMessage = document.querySelector(".error-message") as HTMLElement;
 
   const saveSurveyAndGenerateRoadmap = async () => {
     const userAnswers: initialSurvey = {
@@ -118,12 +120,12 @@ const handleSubmit = async (e: Event, selectedValues: initialSurvey) => {
     }
   };
 
-  const isFormValid = Object.values(selectedValues).every(
-    (value) => value !== null
-  );
+  const isFormValid = Object.values(selectedValues).every((value) => {
+    value !== null;
+  });
 
   if (!isFormValid) {
-    alert("Please fill all the fields");
+    errorMessage.innerHTML = "Please answer all questions";
     return;
   }
 
