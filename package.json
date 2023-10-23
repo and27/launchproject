@@ -14,8 +14,10 @@
     "jsdom": "^22.1.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
+    "vite-plugin-pwa": "^0.16.5",
     "vitest": "^0.34.6",
-    "vitest-canvas-mock": "^0.3.3"
+    "vitest-canvas-mock": "^0.3.3",
+    "workbox-build": "^7.0.0"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.33.1",
