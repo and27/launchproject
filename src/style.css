@@ -542,6 +542,11 @@ fieldset label:focus-within {
   border-color: #bbb;
 }
 
+fieldset[aria-invalid="true"] {
+  padding-inline: var(--spacing-base);
+  border: 1px solid red;
+}
+
 .form__radio-container {
   display: flex;
   gap: 16px;

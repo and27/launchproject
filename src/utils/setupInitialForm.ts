@@ -74,46 +74,35 @@ const handleSubmit = async (e: Event, selectedValues: initialSurvey) => {
   e.preventDefault();
   const errorMessage = document.querySelector(".error-message") as HTMLElement;
 
-  const saveSurveyAndGenerateRoadmap = async () => {
-    const userAnswers: initialSurvey = {
-      idea: selectedValues.idea,
-      concept: selectedValues.concept,
-      mvp: selectedValues.mvp,
-      mvpLaunch: selectedValues.mvpLaunch,
-    };
-
-    const projectName = selectedValues.idea ? "My Project" : "My Startup";
-    const userId = localStorage.getItem("userId");
-
-    const dataToSend = {
-      user: userId,
-      ...userAnswers,
-      mvp_launch: userAnswers.mvpLaunch,
-    };
-    const { error: projectError, data: projectData } = await addProject({
-      name: projectName,
-      user_id: userId,
+  const validateForm = () => {
+    let firstInvalidFieldset: any = null;
+    Object.keys(selectedValues).forEach((key) => {
+      const fieldsetId = key;
+      const fieldset = document.getElementById(fieldsetId);
+      const firstInputInFieldset = fieldset?.querySelector(
+        'input[type="radio"]'
+      );
+      if (selectedValues[key as keyof initialSurvey] === null && fieldset) {
+        if (!firstInvalidFieldset) {
+          firstInvalidFieldset = firstInputInFieldset;
+        }
+        fieldset.setAttribute("aria-invalid", "true");
+      }
     });
 
-    const { error } = await addProjectSurvey(dataToSend);
-
-    if (projectError) console.error(projectError);
-    if (error) console.error(error);
-    else {
-      const projectId = projectData![0].id;
-      const path = generateLearningPath(userAnswers);
-      localStorage.setItem("learningPath", JSON.stringify(path));
-      localStorage.setItem("projectId", projectId.toString());
-      goToRoadmap();
-    }
+    return firstInvalidFieldset;
   };
 
-  const isFormValid = Object.values(selectedValues).every((value) => {
-    value !== null;
-  });
+  const isFormValid = Object.values(selectedValues).every(
+    (value) => value !== null
+  );
 
   if (!isFormValid) {
     errorMessage.innerHTML = "Please answer all questions";
+    const firstInvalidFieldset = validateForm();
+    if (firstInvalidFieldset) {
+      firstInvalidFieldset.focus();
+    }
     return;
   }
 
@@ -124,6 +113,41 @@ const handleSubmit = async (e: Event, selectedValues: initialSurvey) => {
   else {
     const { error } = await loginWithGoogle();
     if (!error) saveSurveyAndGenerateRoadmap();
+  }
+};
+
+const saveSurveyAndGenerateRoadmap = async () => {
+  const userAnswers: initialSurvey = {
+    idea: selectedValues.idea,
+    concept: selectedValues.concept,
+    mvp: selectedValues.mvp,
+    mvpLaunch: selectedValues.mvpLaunch,
+  };
+
+  //todo: change fixed name with form input
+  const projectName = selectedValues.idea ? "My Project" : "My Startup";
+  const userId = localStorage.getItem("userId");
+
+  const dataToSend = {
+    user: userId,
+    ...userAnswers,
+    mvp_launch: userAnswers.mvpLaunch,
+  };
+  const { error: projectError, data: projectData } = await addProject({
+    name: projectName,
+    user_id: userId,
+  });
+
+  const { error } = await addProjectSurvey(dataToSend);
+
+  if (projectError) console.error(projectError);
+  if (error) console.error(error);
+  else {
+    const projectId = projectData![0].id;
+    const path = generateLearningPath(userAnswers);
+    localStorage.setItem("learningPath", JSON.stringify(path));
+    localStorage.setItem("projectId", projectId.toString());
+    goToRoadmap();
   }
 };
 

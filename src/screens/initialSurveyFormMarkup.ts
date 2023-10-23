@@ -8,7 +8,7 @@ export const initialSurveyFormMarkup = `
       <form class="form__form">
         <div class="form__basic-questions"></div>
         <label class="form__project-name">Enter your project's name
-        <input id="idea" class="form__project-input" type="text"/>
+        <input id="projectName" class="form__project-input" type="text"/>
         </label>
         <button class="form__button" type="submit">Continue</button>
         <p class="error-message"></p>
