@@ -13,6 +13,14 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
+  /* COLORS */
+  --color-primary-blue: #213547;
+  --color-primary-black: #070707;
+  --color-secondary-black: #1a1a1a;
+  --color-light-gray: #ccc;
+  --color-primary-white: #f5f5f5;
+  --color-primary-red: #e85964;
+
   /* SPACING */
   --spacing-small: 11px;
   --spacing-base: 16px;
@@ -66,7 +74,7 @@ body {
 
 @keyframes fire {
   100% {
-    fill: #e85964;
+    fill: var(--color-primary-red);
   }
 }
 
@@ -140,7 +148,7 @@ h2 {
 }
 
 .logo #body {
-  fill: #ccc;
+  fill: var(--color-light-gray);
 }
 
 .logo #fire {
@@ -158,11 +166,11 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  color: #000;
-  background-color: #ccc;
+  color: var(--color-primary-black);
+  background-color: var(--color-light-gray);
   cursor: pointer;
   transition: border-color 0.25s;
-  box-shadow: 2px 3px #000;
+  box-shadow: 2px 3px var(--color-primary-black);
 }
 
 button:hover {
@@ -172,14 +180,14 @@ button:hover {
 
 button:focus,
 button:focus-visible {
-  outline: solid 2px white;
+  outline: solid 2px var(--color-primary-white);
   outline-offset: 3px;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--color-primary-blue);
+    background-color: var(--color-primary-white);
   }
 
   a:hover {
@@ -187,43 +195,43 @@ button:focus-visible {
   }
 
   button {
-    background-color: #213547;
-    color: #fff;
+    background-color: var(--color-primary-blue);
+    color: var(--color-primary-white);
   }
 
   button:hover {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--color-primary-black);
+    color: var(--color-primary-white);
   }
 
   .logo #body {
-    fill: #213547;
+    fill: var(--color-primary-blue);
   }
 
   .logo #fire {
-    fill: #213547;
+    fill: var(--color-primary-blue);
   }
 
   textarea.roadmap__input {
-    background-color: #ccc;
-    color: #213547;
+    background-color: var(--color-light-gray);
+    color: var(--color-primary-blue);
   }
 
   div.main__benefit {
-    background-color: #fff;
-    color: #213547;
-    box-shadow: 2px 3px #ccc;
+    background-color: var(--color-primary-white);
+    color: var(--color-primary-blue);
+    box-shadow: 2px 3px var(--color-light-gray);
   }
 
   div.profile__projects-card {
-    background-color: #fff;
-    color: #213547;
-    box-shadow: 2px 3px #ccc;
+    background-color: var(--color-primary-white);
+    color: var(--color-primary-blue);
+    box-shadow: 2px 3px var(--color-light-gray);
   }
 
   button.dropdown__option:hover {
     background-color: #ddd;
-    color: #213547;
+    color: var(--color-primary-blue);
   }
 
   .header__button--outline:focus,
@@ -233,7 +241,7 @@ button:focus-visible {
   button:focus,
   button:focus-visible,
   div.roadmap__day-content:focus {
-    outline: solid 2px #213547;
+    outline: solid 2px var(--color-primary-blue);
     outline-offset: 5px;
   }
 }
@@ -286,7 +294,7 @@ button:focus-visible {
 }
 
 .header__highlight {
-  border-block-end: 4px solid rgb(232, 89, 100);
+  border-block-end: 4px solid var(--color-primary-red);
 }
 
 .header__text {
@@ -308,20 +316,20 @@ button:focus-visible {
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
-  box-shadow: 2px 3px #000;
-  background-color: #1a1a1a;
-  color: white;
+  box-shadow: 2px 3px var(--color-primary-black);
+  background-color: var(--color-secondary-black);
+  color: var(--color-primary-white);
 }
 
 a.header__button--outline {
   text-decoration: none;
-  color: white;
+  color: var(--color-primary-white);
 }
 
 .header__button--outline:hover,
 .navigation__button--outline:hover {
-  box-shadow: 3px 3px #000;
-  border-color: #000;
+  box-shadow: 3px 3px var(--color-primary-black);
+  border-color: var(--color-primary-black);
   background-color: #212121;
 }
 
@@ -330,7 +338,7 @@ a.header__button--outline {
 .navigation__button--outline:focus,
 .navigation__button--outline:focus-visible,
 .roadmap__day-content:focus {
-  outline: solid 2px white;
+  outline: solid 2px var(--color-primary-white);
   outline-offset: 3px;
 }
 
@@ -401,9 +409,9 @@ a.header__button--outline {
   font-size: 1em;
   font-weight: 500;
   color: #999;
-  border-color: #1a1a1a;
+  border-color: var(--color-secondary-black);
   cursor: pointer;
-  box-shadow: 2px 3px #1a1a1a;
+  box-shadow: 2px 3px var(--color-secondary-black);
   background-color: #212121;
   inline-size: 100%;
   text-align: left;
@@ -418,14 +426,14 @@ a.header__button--outline {
 }
 
 .roadmap__stage:hover {
-  border-color: #1a1a1a;
-  background-color: #1a1a1a;
+  border-color: var(--color-secondary-black);
+  background-color: var(--color-secondary-black);
 }
 
 .roadmap__stage--active {
-  color: #fff;
-  background-color: #1a1a1a;
-  box-shadow: 2px 3px #000;
+  color: var(--color-primary-white);
+  background-color: var(--color-secondary-black);
+  box-shadow: 2px 3px var(--color-primary-black);
 }
 
 .roadmap__day-content {
@@ -452,16 +460,16 @@ a.header__button--outline {
   top: -1em;
   right: -12em;
   padding: 0.5em 1em;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--color-primary-black);
+  color: var(--color-primary-white);
   border-radius: 5px;
   font-size: 12px;
   z-index: 10;
 }
 
 .roadmap__input {
-  background-color: #1a1a1a;
-  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--color-secondary-black);
+  color: var(--color-primary-white);
   margin-block-end: 1em;
   display: block;
   border: none;
@@ -501,12 +509,12 @@ a.header__button--outline {
 .main__benefit {
   flex-grow: 1;
   flex-basis: 33%;
-  background-color: #1a1a1a;
+  background-color: var(--color-secondary-black);
   border-radius: 8px;
   position: relative;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 3px #000;
+  box-shadow: 2px 3px var(--color-primary-black);
 }
 
 .main__benefit-img {
@@ -551,9 +559,9 @@ a.header__button--outline {
 fieldset label {
   padding: 1em;
   border-width: 2px;
-  border-color: #1a1a1a;
+  border-color: var(--color-secondary-black);
   border-style: solid;
-  box-shadow: 2px 3px #1a1a1a;
+  box-shadow: 2px 3px var(--color-secondary-black);
   background-color: transparent;
   width: 100%;
   margin-block-start: 1em;
@@ -570,7 +578,7 @@ fieldset label:focus-within {
 
 fieldset[aria-invalid="true"] {
   padding-inline: var(--spacing-base);
-  border: 1px solid red;
+  border: 1px solid var(--color-primary-red);
 }
 
 .form__radio-container {
@@ -637,8 +645,8 @@ fieldset[aria-invalid="true"] {
 .dropdown__option {
   border: none;
   width: 100%;
-  background-color: white;
-  color: black;
+  background-color: var(--color-primary-white);
+  color: var(--color-primary-black);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -673,8 +681,8 @@ fieldset[aria-invalid="true"] {
   justify-content: center;
   gap: 1em;
   border-radius: 8px;
-  box-shadow: 2px 3px #000;
-  background-color: #1a1a1a;
+  box-shadow: 2px 3px var(--color-primary-black);
+  background-color: var(--color-secondary-black);
 }
 
 .profile__projects-img {
