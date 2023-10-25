@@ -182,9 +182,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #213547;
     color: #fff;
@@ -389,6 +391,14 @@ a.header__button--outline {
   background-color: #212121;
   inline-size: 100%;
   text-align: left;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    path {
+      fill: #555;
+    }
+  }
 }
 
 .roadmap__stage:hover {

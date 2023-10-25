@@ -3,6 +3,7 @@ import { addRoadmapStageResponse } from "./utils/supabase";
 import { roadmapMarkup } from "./screens/roadmapMarkup";
 import { roadmapStageType } from "./data/roadmapStages";
 import { ITabsProps } from "./types/roadmap";
+import Lock from "./components/lock";
 
 const AI_API_URL = "https://launch-nlp.vercel.app/api/completion";
 
@@ -37,7 +38,7 @@ const createTabs = (props: ITabsProps) => {
   <button id="tab${step}" class="roadmap__stage ${blockedClass} ${activeClass}
   }" aria-controls="stage${step}" type="button" role="tab" tabindex="${
     active ? 0 : "-1"
-  }">${idx} ${title}</button>
+  }">${idx} ${title} ${blocked && Lock}</button>
   `;
   return blocked ? tabsWrapper(tab) : tab;
 };
