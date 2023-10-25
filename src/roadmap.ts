@@ -50,7 +50,7 @@ function createRoadmapStageContent(props: any) {
   return `
   <div class="roadmap__day-content roadmap__day-content${
     idx === DEFAULT_SELECTED_STAGE ? "--active" : ""
-  }" id="stage${step}" role="tabpanel"  aria-labelledby="tab${step}">
+  }" id="stage${step}" role="tabpanel"  aria-labelledby="tab${step}" tabindex="0">
 
  <h1 class="roadmap__title">${title}</h1>
  <p>${description}</p>
