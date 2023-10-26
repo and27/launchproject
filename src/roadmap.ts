@@ -5,7 +5,7 @@ import { roadmapStageType } from "./data/roadmapStages";
 import { ITabsProps } from "./types/roadmap";
 import Lock from "./components/lock";
 
-const AI_API_URL = "https://launch-nlp.vercel.app/api/completion";
+const AI_API_URL = import.meta.env.VITE_AI_API_URL as string;
 
 export function setupRoadmap(page: HTMLElement) {
   page.innerHTML = roadmapMarkup;
@@ -68,6 +68,8 @@ function createRoadmapStageContent(props: any) {
     <p>${question}</p>
     <textarea class="roadmap__input" id="${name}" name="${name}" rows="4" cols="50" data-question-id=${step}></textarea>
     <button type="submit" class="roadmap__btn">Enviar</button>
+    <h2>Your feedback</h2>
+    <p class="roadmap__ai-feedback">Please fill out the field above.</p>
   </form>
   </div>
   `;
@@ -119,18 +121,30 @@ const getAIFeedback = async (promptValue: string) => {
     }),
   });
 
-  const blobResponse = await aiResponse.blob();
-  const aiTextResponse = new TextDecoder("utf-8").decode(
-    await blobResponse.arrayBuffer()
-  );
+  if (!aiResponse.body) console.error("No response body");
+  else {
+    const reader = aiResponse?.body.getReader();
+    const roadmapContentElement = document.querySelector(
+      ".roadmap__content"
+    ) as HTMLElement;
 
-  const apiResponseParagraph = document.createElement("p");
-  apiResponseParagraph.classList.add("roadmap__ai-feedback");
-  apiResponseParagraph.innerHTML = aiTextResponse;
-  const roadmapContentElement = document.querySelector(
-    ".roadmap__content"
-  ) as HTMLElement;
-  roadmapContentElement.appendChild(apiResponseParagraph);
+    const apiResponseParagraph =
+      (roadmapContentElement.querySelector(
+        ".roadmap__ai-feedback"
+      ) as HTMLElement) || document.createElement("p");
+    apiResponseParagraph.innerHTML = "";
+
+    reader.read().then(function processText({ done, value }): any {
+      if (done) {
+        console.log("Stream completo");
+        return;
+      }
+      const textChunk = new TextDecoder("utf-8").decode(value);
+
+      apiResponseParagraph.innerHTML += textChunk;
+      return reader.read().then(processText);
+    });
+  }
 };
 
 const createTabsAnimation = (page: HTMLElement) => {
@@ -235,6 +249,7 @@ const handleFormSubmit = async (e: Event, element: HTMLElement) => {
 
   const textArea = element.querySelector("textarea") as HTMLTextAreaElement;
   const currentProjectId = localStorage.getItem("projectId");
+  const submitBtn = element.querySelector(".roadmap__btn") as HTMLButtonElement;
 
   const { error } = await addRoadmapStageResponse({
     name: textArea.name,
@@ -247,5 +262,6 @@ const handleFormSubmit = async (e: Event, element: HTMLElement) => {
     return;
   } else {
     getAIFeedback(textArea.value);
+    submitBtn.disabled = true;
   }
 };

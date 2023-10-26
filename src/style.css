@@ -184,6 +184,11 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--color-primary-blue);
@@ -415,14 +420,15 @@ a.header__button--outline {
   background-color: #212121;
   inline-size: 100%;
   text-align: left;
+}
 
-  svg {
-    width: 16px;
-    height: 16px;
-    path {
-      fill: #555;
-    }
-  }
+.roadmap__stage svg {
+  width: 16px;
+  height: 16px;
+}
+
+.roadmap__stage path {
+  fill: #555;
 }
 
 .roadmap__stage:hover {
@@ -475,10 +481,12 @@ a.header__button--outline {
   border: none;
   border-radius: 8px;
   padding-block: 1em;
+  width: 100%;
 }
 
 .roadmap__btn {
-  margin-block-start: var(--spacing-base);
+  margin-block-start: var(--spacing-small);
+  width: 100%;
 }
 
 .roadmap__ai-feedback {
