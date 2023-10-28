@@ -411,6 +411,10 @@ button:disabled {
   }
 }
 
+.roadmap__video {
+  min-height: 360px;
+}
+
 .roadmap__content p {
   margin-block-end: var(--spacing-large);
 }

@@ -6,6 +6,7 @@ import { ITabsProps } from "./types/roadmap";
 import Lock from "./components/lock";
 
 const AI_API_URL = import.meta.env.VITE_AI_API_URL as string;
+console.log(AI_API_URL);
 
 export function setupRoadmap(page: HTMLElement) {
   page.innerHTML = roadmapMarkup;
@@ -54,7 +55,7 @@ function createRoadmapStageContent(props: any) {
 
  <h1 class="roadmap__title">${title}</h1>
  <p>${description}</p>
- <iframe width="560" height="315" src="https://www.youtube.com/embed/${video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+ <iframe width="100%" class="roadmap__video" src="https://www.youtube.com/embed/${video}" title="Roadmap video ${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
   <h2>Instructions</h2>
   <ol class="roadmap__instructions">
