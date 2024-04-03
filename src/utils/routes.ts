@@ -7,6 +7,7 @@ import { setupProfile } from "./setupProfile";
 
 export const goToHome = () => {
   Router("home");
+  setupRoutes(document.querySelector<HTMLElement>("#app")!);
   setupLottie(document.querySelector<HTMLDivElement>("#lottie")!);
 };
 

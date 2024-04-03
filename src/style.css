@@ -513,16 +513,54 @@ button:disabled {
   width: 100%;
 }
 
-.roadmap__btn {
+button.roadmap__btn {
   margin-block-start: var(--spacing-small);
   width: 100%;
+  background-color: var(--color-primary-black);
+  color: var(--color-primary-white);
 }
 
 .roadmap__ai-feedback {
   margin-block-start: var(--spacing-large);
 }
 
-/*# main (benefits) */
+.roadmap__feedback {
+  background-color: #e85964;
+  margin-block-start: var(--spacing-xxlarge);
+  border-radius: 8px;
+  padding: var(--spacing-medium);
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-large);
+  align-items: center;
+}
+
+.roadmap__feedback-content {
+  flex-shrink: 0;
+}
+
+.roadmap__feedback p:first-child {
+  margin-block-end: var(--spacing-small);
+}
+
+.roadmap__feedback p:last-child {
+  margin-block-end: 0;
+}
+
+a.roadmap__feedback-btn {
+  align-self: center;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--color-primary-black);
+  background-color: var(--color-light-gray);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
 .main__title {
   margin-block-end: var(--spacing-large);
 }

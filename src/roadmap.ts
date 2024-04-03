@@ -57,21 +57,30 @@ function createRoadmapStageContent(props: any) {
  <p>${description}</p>
  <iframe width="100%" class="roadmap__video" src="https://www.youtube.com/embed/${video}" title="Roadmap video ${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-  <h2>Instructions</h2>
+  <h2>Prepare your arsenal</h2>
   <ol class="roadmap__instructions">
   ${instructions
     .map((instruction: string) => `<li>${instruction}</li>`)
     .join("")}
   </ol>
+  <p>If you need help, check out the resources below:</p>
+  <a href="/ideation.pdf" download="ideation.pdf" class="roadmap__guide">Download guide</a 
 
   <form class="roadmap__form">
-    <h2>Your turn</h2>
+    <h2>Share your findings</h2>
     <p>${question}</p>
     <textarea class="roadmap__input" id="${name}" name="${name}" rows="4" cols="50" data-question-id=${step}></textarea>
-    <button type="submit" class="roadmap__btn">Enviar</button>
+    <button type="submit" class="roadmap__btn">Send</button>
     <h2>Your feedback</h2>
     <p class="roadmap__ai-feedback">Please fill out the field above.</p>
   </form>
+
+  <div class="roadmap__feedback">
+  <div class="roadmap__feedback-content">
+   <p>Would you like to receive experts feedback on your findings?</p>
+   <p>Schedule a free 1:1 session with one of our mentors.</p>
+  </div>
+   <a class="roadmap__feedback-btn" target="_blank" href="https://andresbanda.com/contact">Schedule session</a>
   </div>
   `;
 }
