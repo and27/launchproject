@@ -5,8 +5,10 @@ export const profileMarkup = `
     <div class="profile__projects-container">
       <div class="profile__projects-card">
         <img class="profile__projects-img" src="ideasPink.jpg" alt=""/>
-        <h3 class="profile__projects-title">Project 1</h3>
-      </div>
+        <h3 class="profile__projects-title"></h3>
+        <div class="profile__projects-progress">
+          <div class="profile__projects-progress-bar"></div>
+      </div>      
     </div>
 </div>
 </section>
