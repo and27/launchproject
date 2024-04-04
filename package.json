@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.33.1",
+    "i18next": "^23.10.1",
     "install": "^0.13.0",
     "lottie-web": "^5.12.2",
     "motion": "^10.16.2"
