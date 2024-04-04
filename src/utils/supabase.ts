@@ -24,6 +24,14 @@ export const getUserInfoFromId = async (id: number) => {
   return { data, error };
 };
 
+export const getProjectName = async (projectId: number) => {
+  const { data, error } = await supabase
+    .from("project")
+    .select("name")
+    .eq("id", projectId);
+  return { data, error };
+};
+
 export const addProject = async (project: any) => {
   const { data, error } = await supabase
     .from("project")
@@ -39,6 +47,7 @@ export const addProjectSurvey = async (survey: any) => {
     concept: survey.concept,
     mvp: survey.mvp,
     mvp_launch: survey.mvp_launch,
+    project: survey.project,
   };
   const { data, error } = await supabase
     .from("project_survey")

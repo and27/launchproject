@@ -46,6 +46,14 @@ export const addFormListeners = (form: HTMLFormElement) => {
   const mvpInput = form.querySelector("#mvp");
   const mvpLaunchInput = form.querySelector("#mvpLaunch");
   const button = form.querySelector(".form__button");
+  const projectNameInput = form.querySelector(
+    "#projectName"
+  ) as HTMLInputElement;
+  let projectName = "";
+
+  projectNameInput?.addEventListener("change", (event) => {
+    projectName = (event.target as HTMLInputElement).value;
+  });
 
   ideaInput?.addEventListener("change", (event) => {
     const selectedValue = (event.target as HTMLInputElement).value;
@@ -67,10 +75,14 @@ export const addFormListeners = (form: HTMLFormElement) => {
     updateSelectedValues("mvpLaunch", selectedValue === "yes" ? true : false);
   });
 
-  button?.addEventListener("click", (e) => handleSubmit(e, selectedValues));
+  button?.addEventListener("click", (e) =>
+    handleSubmit(e, { selectedValues, projectName })
+  );
 };
 
-const handleSubmit = async (e: Event, selectedValues: initialSurvey) => {
+const handleSubmit = async (e: Event, formData: any) => {
+  const selectedValues = formData.selectedValues;
+  const projectName = formData.projectName;
   e.preventDefault();
   const errorMessage = document.querySelector(".error-message") as HTMLElement;
 
@@ -109,14 +121,14 @@ const handleSubmit = async (e: Event, selectedValues: initialSurvey) => {
   localStorage.setItem("formData", JSON.stringify(selectedValues));
   const userId = localStorage.getItem("userId");
 
-  if (userId) saveSurveyAndGenerateRoadmap();
+  if (userId) saveSurveyAndGenerateRoadmap(projectName);
   else {
     const { error } = await loginWithGoogle();
-    if (!error) saveSurveyAndGenerateRoadmap();
+    if (!error) saveSurveyAndGenerateRoadmap(projectName);
   }
 };
 
-const saveSurveyAndGenerateRoadmap = async () => {
+const saveSurveyAndGenerateRoadmap = async (projectName: string) => {
   const userAnswers: initialSurvey = {
     idea: selectedValues.idea,
     concept: selectedValues.concept,
@@ -124,19 +136,19 @@ const saveSurveyAndGenerateRoadmap = async () => {
     mvpLaunch: selectedValues.mvpLaunch,
   };
 
-  //todo: change fixed name with form input
-  const projectName = selectedValues.idea ? "My Project" : "My Startup";
   const userId = localStorage.getItem("userId");
+
+  const { error: projectError, data: projectData } = await addProject({
+    name: projectName,
+    user_id: userId,
+  });
 
   const dataToSend = {
     user: userId,
     ...userAnswers,
     mvp_launch: userAnswers.mvpLaunch,
+    project: projectData![0].id,
   };
-  const { error: projectError, data: projectData } = await addProject({
-    name: projectName,
-    user_id: userId,
-  });
 
   const { error } = await addProjectSurvey(dataToSend);
 
