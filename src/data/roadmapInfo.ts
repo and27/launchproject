@@ -3,7 +3,7 @@ const day1 = {
   keyword: "mission",
   title: "Day 1: your mission",
   description: [
-    " Comprender tu misión es esencial para el éxito de tu negocio. La misión define tu propósito y dirección, estableciendo los valores fundamentales de tu empresa. Te brinda un marco claro para tomar decisiones estratégicas y guía tus acciones diarias. Además, ayuda a comunicar tus objetivos y propuesta de valor a empleados, clientes y otros stakeholders. ",
+    "Comprender tu misión es esencial para el éxito de tu negocio. La misión define tu propósito y dirección, estableciendo los valores fundamentales de tu empresa. Te brinda un marco claro para tomar decisiones estratégicas y guía tus acciones diarias. Además, ayuda a comunicar tus objetivos y propuesta de valor a empleados, clientes y otros stakeholders. ",
     "Tu misión es tu brújula hacia el éxito. Define tu propósito, alinea tus acciones y comunica tu propuesta de valor. Una misión clara y bien definida te diferencia y te impulsa hacia el crecimiento. No dejes que tu negocio se pierda en la multitud, dale una dirección clara con una misión sólida.",
   ],
   example: {

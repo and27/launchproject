@@ -39,7 +39,7 @@ const createTabs = (props: ITabsProps) => {
   <button id="tab${step}" class="roadmap__stage ${blockedClass} ${activeClass}
   }" aria-controls="stage${step}" type="button" role="tab" tabindex="${
     active ? 0 : "-1"
-  }">${idx} ${title} ${blocked && Lock}</button>
+  }">${idx} ${title} ${blocked ? Lock : ""}</button>
   `;
   return blocked ? tabsWrapper(tab) : tab;
 };
@@ -63,8 +63,8 @@ function createRoadmapStageContent(props: any) {
     .map((instruction: string) => `<li>${instruction}</li>`)
     .join("")}
   </ol>
-  <p>If you need help, check out the resources below:</p>
-  <a href="/ideation.pdf" download="ideation.pdf" class="roadmap__guide">Download guide</a 
+  <p>If you need help, download the   <a href="/ideation.pdf" download="ideation.pdf" class="roadmap__guide">ideation guide</a> 
+  .</p>
 
   <form class="roadmap__form">
     <h2>Share your findings</h2>

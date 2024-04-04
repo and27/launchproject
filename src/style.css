@@ -157,7 +157,8 @@ h2 {
   padding: 2em;
 }
 
-button {
+button,
+a.roadmap__feedback-btn {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -170,7 +171,8 @@ button {
   transition: border-color 0.25s;
 }
 
-button:hover {
+button:hover,
+a.roadmap__feedback-btn:hover {
   background-color: white;
 }
 
@@ -537,6 +539,7 @@ button.roadmap__btn {
 
 .roadmap__feedback-content {
   flex-shrink: 0;
+  color: var(--color-primary-black);
 }
 
 .roadmap__feedback p:first-child {
@@ -549,16 +552,6 @@ button.roadmap__btn {
 
 a.roadmap__feedback-btn {
   align-self: center;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  color: var(--color-primary-black);
-  background-color: var(--color-light-gray);
-  cursor: pointer;
-  transition: border-color 0.25s;
 }
 
 .main__title {

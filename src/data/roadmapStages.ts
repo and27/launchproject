@@ -16,7 +16,7 @@ export const roadmapStages: roadmapStageType[] = [
     name: "idea",
     video: "CsRhoqK74RQ?si=mIEM8rLJLWgyDmsZ",
     title: "Idea Generation",
-    description: "Objective: Generate a list of potential business ideas.",
+    description: "Let's generate a list of potential business ideas.",
     instructions: [
       "Conduct an individual or team brainstorming session.",
       "Identify problems or needs in the market that could be addressed.",
@@ -32,7 +32,7 @@ export const roadmapStages: roadmapStageType[] = [
     video: "EzLpKcK-5K4?si=0EBcGyIHYWvub-Hl",
     title: "Preliminary Evaluation",
     description:
-      "Objective: Filter and prioritize ideas generated in the previous stage.",
+      "Let's filter and prioritize ideas generated in the previous stage.",
     instructions: [
       "Perform an initial feasibility analysis for each idea.",
       "Evaluate the market potential and competition.",
@@ -46,8 +46,7 @@ export const roadmapStages: roadmapStageType[] = [
     name: "concept",
     video: "Toc-jkcWs7Y?si=C9KLz9CXMrUCKvTI",
     title: "Concept Development",
-    description:
-      "Objective: Refine and clearly define a promising business idea.",
+    description: "Let's Refine and clearly define a promising business idea.",
     instructions: [
       "Develop a detailed description of the idea, including its value proposition.",
       "Define the target market and target audience.",
@@ -63,7 +62,7 @@ export const roadmapStages: roadmapStageType[] = [
     video: "Toc-jkcWs7Y?si=C9KLz9CXMrUCKvTI",
     title: "Business Model",
     description:
-      "Objective: Define a solid business model that describes how your idea will generate revenue, deliver value to customers, and remain sustainable over time.",
+      "Let's define a solid business model that describes how your idea will generate revenue, deliver value to customers, and remain sustainable over time.",
     instructions: [
       "Determine how your business will generate revenue. Will you offer paid products or services? Explore subscription models, advertising, or other revenue sources.",
       "Clearly define your key customer segments. Who is your product or service intended for? Identify their specific needs, desires, and problems.",
@@ -82,7 +81,7 @@ export const roadmapStages: roadmapStageType[] = [
     video: "7z1p91QXkpI?si=Hpr8CeAyaMPCqZg2",
     title: "Construction of the MVP",
     description:
-      "Objective: Identify the key feature that stands out in your Minimum Viable Product (MVP).",
+      "Let's identify the key feature that stands out in your Minimum Viable Product (MVP).",
     instructions: [
       "Think about the main function or feature of your MVP that provides the most value to your target audience.",
       "Consider the aspects that differentiate your MVP from competitors or existing solutions.",
@@ -114,7 +113,7 @@ export const roadmapStages: roadmapStageType[] = [
     video: "Toc-jkcWs7Y?si=C9KLz9CXMrUCKvTI",
     title: "Launch of the MVP",
     description:
-      "Objective: Gather feedback from your users or customers after launching your MVP.",
+      "Let's gather feedback from your users or customers after launching your MVP.",
     instructions: [
       "Feedback is crucial in the early stages of a product to make necessary adjustments.",
       "Engage with your users or customers and ask for their honest opinions.",
@@ -129,7 +128,7 @@ export const roadmapStages: roadmapStageType[] = [
     video: "-CaTMv8sBAQ?si=qooNz04_xxQTJdVs",
     title: "Validation of the Idea",
     description:
-      "Objective: Determine the level of interest or acceptance of your product/service in the market.",
+      "Let's determine the level of interest or acceptance of your product/service in the market.",
     instructions: [
       "Think of the clearest signs of interest towards your product or service.",
       "This can be measured through pre-sales, sign-ups, inquiries, or direct sales.",
