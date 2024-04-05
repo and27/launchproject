@@ -1,8 +1,9 @@
+import { getLoginButton } from "../utils/int8";
 import { handleLogout, toggleDropdown } from "../utils/login";
 import { gotoProfile } from "../utils/routes";
 
 const dropdownMarkup = `
-  <button id="loginButton" class="navigation__button--outline">Login</button>
+  <button id="loginButton" class="navigation__button--outline">${getLoginButton()}</button>
   <div id="userDropdown" class="dropdown-content">
     <button class="dropdown__option">Ir a perfil</button>
     <button class="dropdown__option">Cerrar sesión</button>

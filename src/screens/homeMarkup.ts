@@ -1,12 +1,19 @@
+import {
+  getHomePageMainButton,
+  getHomePageSecondaryButton,
+  getHomePageTitle,
+  getHomePageTitleHighlight,
+} from "../utils/int8";
+
 export const homeMarkup = `
 <div class="container">
   <section class="header__container">
     <div class="header__content">
-      <h1 class="header__title">Create your own <span class="header__highlight">startup<span></h1>
+      <h1 class="header__title">${getHomePageTitle()} <span class="header__highlight">${getHomePageTitleHighlight()}<span></h1>
       <p class="header__text">Turn your idea into a thriving startup in just days, with guidance through every step from concept to funding and brand creation. Experience the thrill of entrepreneurship and see your vision become a reality.</p>
       <div class="header__button-container">
-        <button class="header__button">Let's start</button>
-        <a href="#howit" class="header__button--outline">Learn more</a>
+        <button class="header__button">${getHomePageMainButton()}</button>
+        <a href="#howit" class="header__button--outline">${getHomePageSecondaryButton()}</a>
       </div>
     </div>
     <div id="lottie" class="header__lottie"></div>

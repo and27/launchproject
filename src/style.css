@@ -788,3 +788,13 @@ fieldset[aria-invalid="true"] {
   background-color: #4caf50; /* Color of the progress bar */
   border-radius: 5px; /* Adjust border radius as needed */
 }
+
+/* languageSwitcher */
+.navigation__content {
+  display: flex;
+  flex-direction: row;
+}
+
+.lang__container {
+  margin-inline-end: var(--spacing-small);
+}
