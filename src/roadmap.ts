@@ -3,6 +3,12 @@ import { addRoadmapStageResponse } from "./utils/supabase";
 import { roadmapMarkup } from "./screens/roadmapMarkup";
 import { roadmapStageType } from "./data/roadmapStages";
 import { createTabsAnimation, populateTabs } from "./utils/setupRoadmapTabs";
+import {
+  getRoadmapInstructionsTitle,
+  getRoadmapResponseTitle,
+  getRoadmapFeedbackTitle,
+  getRoadmapInstructionsGuide,
+} from "./utils/int8";
 
 const AI_API_URL = import.meta.env.VITE_AI_API_URL as string;
 console.log(AI_API_URL);
@@ -29,22 +35,21 @@ function createRoadmapStageContent(props: any) {
  <h1 class="roadmap__title">${title}</h1>
  <p>${description}</p>
  <iframe width="100%" class="roadmap__video" src="https://www.youtube.com/embed/${video}" title="Roadmap video ${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-  <h2>Prepare your arsenal</h2>
+  <h2 class="roadmap__instructions-title">${getRoadmapInstructionsTitle()}</h2>
   <ol class="roadmap__instructions">
   ${instructions
     .map((instruction: string) => `<li>${instruction}</li>`)
     .join("")}
   </ol>
-  <p>If you need help, download the   <a href="/ideation.pdf" download="ideation.pdf" class="roadmap__guide">ideation guide</a> 
+  <p>${getRoadmapInstructionsGuide()} <a href="/ideation.pdf" download="ideation.pdf" class="roadmap__guide">ideation guide</a> 
   .</p>
 
   <form class="roadmap__form">
-    <h2>Share your findings</h2>
+    <h2 class="roadmap__form-title">${getRoadmapResponseTitle()}</h2>
     <p>${question}</p>
     <textarea class="roadmap__input" id="${name}" name="${name}" rows="4" cols="50" data-question-id=${step}></textarea>
     <button type="submit" class="roadmap__btn">Send</button>
-    <h2>Your feedback</h2>
+    <h2>${getRoadmapFeedbackTitle()} </h2>
     <p class="roadmap__ai-feedback">Please fill out the field above.</p>
   </form>
 

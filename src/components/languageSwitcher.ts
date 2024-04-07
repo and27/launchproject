@@ -2,6 +2,7 @@ import i18next from "i18next";
 import { updateHomePageText } from "../utils/languageUpdate.ts/updateHomeText";
 import { updateProfilePageText } from "../utils/languageUpdate.ts/updateProfileText";
 import { updateNavigationText } from "../utils/languageUpdate.ts/updateNavigationText";
+import { updateRoadmapPageText } from "../utils/languageUpdate.ts/updateRoadmapText";
 
 const langSwitcherMarkup = `
   <button id="langSwitcher" class="lang-switcher">
@@ -18,16 +19,17 @@ function toggleLanguage(): void {
   const currentLng = i18next.language;
 
   if (currentLng === "es") {
-    switcherButton.innerHTML = "Switch to english";
+    switcherButton.innerHTML = "English";
     i18next.changeLanguage("en");
   } else {
-    switcherButton.innerHTML = "Ver en español";
+    switcherButton.innerHTML = "Español";
     i18next.changeLanguage("es");
   }
 
   updateHomePageText();
   updateProfilePageText();
   updateNavigationText();
+  updateRoadmapPageText();
 }
 
 const addSwitcherListeners = () => {

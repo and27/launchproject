@@ -1,4 +1,7 @@
 import {
+  getHomePageBenefitsDescription,
+  getHomePageBenefitsTitle,
+  getHomePageDescription,
   getHomePageMainButton,
   getHomePageSecondaryButton,
   getHomePageTitle,
@@ -10,6 +13,9 @@ export function updateHomePageText() {
   const homePageTitleHighlight = getHomePageTitleHighlight();
   const homePageMainButton = getHomePageMainButton();
   const homePageSecondaryButton = getHomePageSecondaryButton();
+  const homePageDescription = getHomePageDescription();
+  const homePageBenefitsTitle = getHomePageBenefitsTitle();
+  const homePageBenefitsDescription = getHomePageBenefitsDescription();
 
   try {
     document.querySelector(
@@ -18,6 +24,10 @@ export function updateHomePageText() {
     document.querySelector(".header__button")!.textContent = homePageMainButton;
     document.querySelector(".header__button--outline")!.textContent =
       homePageSecondaryButton;
+    document.querySelector(".header__text")!.textContent = homePageDescription;
+    document.querySelector(".main__title")!.textContent = homePageBenefitsTitle;
+    document.querySelector(".main__text")!.textContent =
+      homePageBenefitsDescription;
   } catch (error) {
     console.error("Error updating home page text:", error);
   }

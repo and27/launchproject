@@ -1,4 +1,7 @@
 import {
+  getHomePageBenefitsDescription,
+  getHomePageBenefitsTitle,
+  getHomePageDescription,
   getHomePageMainButton,
   getHomePageSecondaryButton,
   getHomePageTitle,
@@ -10,7 +13,7 @@ export const homeMarkup = `
   <section class="header__container">
     <div class="header__content">
       <h1 class="header__title">${getHomePageTitle()} <span class="header__highlight">${getHomePageTitleHighlight()}<span></h1>
-      <p class="header__text">Turn your idea into a thriving startup in just days, with guidance through every step from concept to funding and brand creation. Experience the thrill of entrepreneurship and see your vision become a reality.</p>
+      <p class="header__text">${getHomePageDescription()}</p>
       <div class="header__button-container">
         <button class="header__button">${getHomePageMainButton()}</button>
         <a href="#howit" class="header__button--outline">${getHomePageSecondaryButton()}</a>
@@ -21,8 +24,8 @@ export const homeMarkup = `
 
   <section class="main__container" id="howit">
     <div class="main__content">
-      <h2 class="main__title">How it works?</h2>
-      <p class="main__text">Launch is your essential partner in turning that spark of an idea into a market-ready product or service. No prior experience needed; all you need is a vision, and we provide the roadmap.</p>
+      <h2 class="main__title">${getHomePageBenefitsTitle()}</h2>
+      <p class="main__text">${getHomePageBenefitsDescription()}</p>
       <div class="main__benefits-container">
         <div class="main__benefit">
           <img class="main__benefit-img" src="ideasPink.jpg" alt=""/>
