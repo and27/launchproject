@@ -6,7 +6,7 @@ import { updateRoadmapPageText } from "../utils/languageUpdate.ts/updateRoadmapT
 
 const langSwitcherMarkup = `
   <button id="langSwitcher" class="lang-switcher">
-    Switch to english
+    English
   </button>`;
 
 export const setupLangSwitcher = (element: HTMLElement) => {

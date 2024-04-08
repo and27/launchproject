@@ -37,6 +37,8 @@ export async function setupLogin(dropdown: HTMLElement) {
     supabase.auth.onAuthStateChange(
       (event: AuthChangeEvent, session: Session | null) => {
         if (event == "SIGNED_IN") {
+          const user = localStorage.getItem("userId");
+          if (user) return;
           const userId = session?.user?.id;
           userId && localStorage.setItem("userId", userId as string);
           const parsedEmail = session?.user?.email?.split("@")[0];

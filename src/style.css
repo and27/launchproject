@@ -312,6 +312,7 @@ button:disabled {
 
 .header__lottie {
   flex-shrink: 0;
+  min-width: 40%;
 }
 
 .header__content {

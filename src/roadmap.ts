@@ -14,6 +14,7 @@ const AI_API_URL = import.meta.env.VITE_AI_API_URL as string;
 console.log(AI_API_URL);
 
 export function setupRoadmap(page: HTMLElement) {
+  console.log("exec");
   page.innerHTML = roadmapMarkup;
   populateRoadmap(page);
   populateTabs(page);
@@ -41,7 +42,7 @@ function createRoadmapStageContent(props: any) {
     .map((instruction: string) => `<li>${instruction}</li>`)
     .join("")}
   </ol>
-  <p>${getRoadmapInstructionsGuide()} <a href="/ideation.pdf" download="ideation.pdf" class="roadmap__guide">ideation guide</a> 
+  <p class="roadmap__instructions-guide">${getRoadmapInstructionsGuide()} <a href="/ideation.pdf" download="ideation.pdf" class="roadmap__guide">ideation guide</a> 
   .</p>
 
   <form class="roadmap__form">
@@ -49,7 +50,8 @@ function createRoadmapStageContent(props: any) {
     <p>${question}</p>
     <textarea class="roadmap__input" id="${name}" name="${name}" rows="4" cols="50" data-question-id=${step}></textarea>
     <button type="submit" class="roadmap__btn">Send</button>
-    <h2>${getRoadmapFeedbackTitle()} </h2>
+    
+    <h2 class="roadmap__feedback-title">${getRoadmapFeedbackTitle()} </h2>
     <p class="roadmap__ai-feedback">Please fill out the field above.</p>
   </form>
 
