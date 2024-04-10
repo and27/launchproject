@@ -287,12 +287,13 @@ button:disabled {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 32px;
   margin-top: var(--spacing-medium);
   padding-inline: var(--spacing-medium);
+  gap: var(--spacing-medium);
 
   @media (min-width: 768px) {
     padding-inline: var(--spacing-large);
+    gap: var(--spacing-large);
   }
 
   @media (min-width: 1024px) {
@@ -714,8 +715,17 @@ fieldset[aria-invalid="true"] {
   height: 30px;
 }
 
+@media (max-width: 767px) {
+  .lang-switcher {
+    width: 140px;
+  }
+}
 .navigation__button--outline {
-  width: 160px;
+  width: 140px;
+
+  @media (min-width: 768px) {
+    width: 160px;
+  }
 }
 
 .dropdown {
@@ -811,7 +821,13 @@ fieldset[aria-invalid="true"] {
 /* languageSwitcher */
 .navigation__content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: var(--spacing-small);
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .lang__container {
