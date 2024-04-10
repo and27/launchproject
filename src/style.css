@@ -161,7 +161,7 @@ button,
 a.roadmap__feedback-btn {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.6em 0.8em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -169,6 +169,10 @@ a.roadmap__feedback-btn {
   background-color: var(--color-light-gray);
   cursor: pointer;
   transition: border-color 0.25s;
+
+  @media (min-width: 768px) {
+    padding-inline: 1.2em;
+  }
 }
 
 button:hover,
@@ -344,7 +348,7 @@ button:disabled {
 .navigation__button--outline {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.6em 0.8em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -352,6 +356,10 @@ button:disabled {
   transition: border-color 0.25s;
   background-color: var(--color-secondary-black);
   color: var(--color-primary-white);
+
+  @media (min-width: 768px) {
+    padding-inline: 1.2em;
+  }
 }
 
 .header__button--outline {
@@ -531,15 +539,21 @@ button.roadmap__btn {
   background-color: #e85964;
   margin-block-start: var(--spacing-xxlarge);
   border-radius: 8px;
-  padding: var(--spacing-medium);
+  padding: var(--spacing-base);
   display: flex;
-  flex-direction: row;
-  gap: var(--spacing-large);
-  align-items: center;
+  flex-direction: column;
+  gap: var(--spacing-base);
+  align-items: start;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-large);
+    padding: var(--spacing-medium);
+  }
 }
 
 .roadmap__feedback-content {
-  flex-shrink: 0;
   color: var(--color-primary-black);
 }
 
@@ -552,7 +566,11 @@ button.roadmap__btn {
 }
 
 a.roadmap__feedback-btn {
-  align-self: center;
+  align-self: flex-start;
+
+  @media (min-width: 768px) {
+    align-self: center;
+  }
 }
 
 .main__title {
