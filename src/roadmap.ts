@@ -9,12 +9,12 @@ import {
   getRoadmapFeedbackTitle,
   getRoadmapInstructionsGuide,
 } from "./utils/int8";
+import i18next from "i18next";
 
 const AI_API_URL = import.meta.env.VITE_AI_API_URL as string;
 console.log(AI_API_URL);
 
 export function setupRoadmap(page: HTMLElement) {
-  console.log("exec");
   page.innerHTML = roadmapMarkup;
   populateRoadmap(page);
   populateTabs(page);
@@ -25,8 +25,17 @@ export function setupRoadmap(page: HTMLElement) {
 }
 
 function createRoadmapStageContent(props: any) {
-  const { title, description, question, instructions, step, name, video, idx } =
-    props;
+  const {
+    titleKey,
+    description,
+    question,
+    instructions,
+    step,
+    name,
+    video,
+    idx,
+  } = props;
+  const title = i18next.t(titleKey);
   const DEFAULT_SELECTED_STAGE = 0;
   return `
   <div class="roadmap__day-content roadmap__day-content${

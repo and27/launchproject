@@ -1,6 +1,6 @@
 export interface ITabsProps {
   step: number;
-  title: string;
+  titleKey: string;
   active: boolean;
   blocked: boolean;
   idx: number;

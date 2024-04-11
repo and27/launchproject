@@ -2,6 +2,7 @@ import { animate, inView, stagger } from "motion";
 import { ITabsProps } from "../types/roadmap";
 import { roadmapStageType } from "../data/roadmapStages";
 import Lock from "../components/lock";
+import i18next from "i18next";
 
 //this wrapper is needed to add the tooltip to the blocked tabs
 //todo: add block icon to the blocked tabs
@@ -16,9 +17,10 @@ const tabsWrapper = (children: any) => {
 };
 
 const createTabs = (props: ITabsProps) => {
-  const { step, title, active, blocked, idx } = props;
+  const { step, titleKey, active, blocked, idx } = props;
   const blockedClass = blocked ? "roadmap__stage--blocked" : "";
   const activeClass = active ? "roadmap__stage--active" : "";
+  const title = i18next.t(titleKey);
 
   const tab = `
     <button id="tab${step}" class="roadmap__stage ${blockedClass} ${activeClass}

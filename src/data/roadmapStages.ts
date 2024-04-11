@@ -2,7 +2,7 @@ export type roadmapStageType = {
   level: number;
   step: number;
   name: string;
-  title: string;
+  titleKey: string;
   description: string;
   instructions: string[];
   question: string;
@@ -15,7 +15,7 @@ export const roadmapStages: roadmapStageType[] = [
     step: 1,
     name: "idea",
     video: "CsRhoqK74RQ?si=mIEM8rLJLWgyDmsZ",
-    title: "Idea Generation",
+    titleKey: "ideaTitle",
     description: "Let's generate a list of potential business ideas.",
     instructions: [
       "Conduct an individual or team brainstorming session.",
@@ -30,7 +30,7 @@ export const roadmapStages: roadmapStageType[] = [
     step: 2,
     name: "evaluation",
     video: "EzLpKcK-5K4?si=0EBcGyIHYWvub-Hl",
-    title: "Preliminary Evaluation",
+    titleKey: "evaluationTitle",
     description:
       "Let's filter and prioritize ideas generated in the previous stage.",
     instructions: [
@@ -45,7 +45,7 @@ export const roadmapStages: roadmapStageType[] = [
     step: 3,
     name: "concept",
     video: "Toc-jkcWs7Y?si=C9KLz9CXMrUCKvTI",
-    title: "Concept Development",
+    titleKey: "conceptTitle",
     description: "Let's Refine and clearly define a promising business idea.",
     instructions: [
       "Develop a detailed description of the idea, including its value proposition.",
@@ -60,7 +60,7 @@ export const roadmapStages: roadmapStageType[] = [
     step: 4,
     name: "businessModel",
     video: "Toc-jkcWs7Y?si=C9KLz9CXMrUCKvTI",
-    title: "Business Model",
+    titleKey: "businessModelTitle",
     description:
       "Let's define a solid business model that describes how your idea will generate revenue, deliver value to customers, and remain sustainable over time.",
     instructions: [
@@ -79,7 +79,7 @@ export const roadmapStages: roadmapStageType[] = [
     step: 5,
     name: "mvp",
     video: "7z1p91QXkpI?si=Hpr8CeAyaMPCqZg2",
-    title: "Construction of the MVP",
+    titleKey: "mvpTitle",
     description:
       "Let's identify the key feature that stands out in your Minimum Viable Product (MVP).",
     instructions: [
@@ -94,7 +94,7 @@ export const roadmapStages: roadmapStageType[] = [
     step: 6,
     name: "mvpStrategy",
     video: "nG4_Y8kceWI?si=-yXfMe11eLlV9GA0",
-    title: "MVP Strategy",
+    titleKey: "mvpStrategyTitle",
     description:
       "Planning and defining the minimum set of features needed to launch your product to early users.",
     instructions: [
@@ -111,7 +111,7 @@ export const roadmapStages: roadmapStageType[] = [
     step: 7,
     name: "mvpLaunch",
     video: "Toc-jkcWs7Y?si=C9KLz9CXMrUCKvTI",
-    title: "Launch of the MVP",
+    titleKey: "mvpLaunchTitle",
     description:
       "Let's gather feedback from your users or customers after launching your MVP.",
     instructions: [
@@ -126,7 +126,7 @@ export const roadmapStages: roadmapStageType[] = [
     step: 8,
     name: "validation",
     video: "-CaTMv8sBAQ?si=qooNz04_xxQTJdVs",
-    title: "Validation of the Idea",
+    titleKey: "validationTitle",
     description:
       "Let's determine the level of interest or acceptance of your product/service in the market.",
     instructions: [
@@ -142,7 +142,7 @@ export const roadmapStages: roadmapStageType[] = [
     step: 9,
     name: "pitch",
     video: "g4k8IJj2N44?si=XuysHJBtJn0tTjzD",
-    title: "Communication - Pitch",
+    titleKey: "pitchTitle",
     description: "Craft a compelling pitch for your product or service.",
     instructions: [
       "Start by stating the problem you aim to solve.",
@@ -159,7 +159,7 @@ export const roadmapStages: roadmapStageType[] = [
     step: 10,
     name: "adaptation",
     video: "Toc-jkcWs7Y?si=C9KLz9CXMrUCKvTI",
-    title: "Adaptation",
+    titleKey: "adaptationTitle",
     description:
       "Modify and refine your product or service based on feedback and new insights.",
     instructions: [
@@ -176,7 +176,7 @@ export const roadmapStages: roadmapStageType[] = [
     level: 3,
     step: 11,
     name: "marketing",
-    title: "Marketing",
+    titleKey: "marketingTitle",
     description:
       "Promote your product or service to your target audience and drive sales.",
     instructions: [
@@ -192,7 +192,7 @@ export const roadmapStages: roadmapStageType[] = [
     level: 3,
     step: 12,
     name: "launch",
-    title: "Launch",
+    titleKey: "launchTitle",
     description: "Introducing your product or service to the market.",
     instructions: [
       "Set a launch date and create a timeline of activities leading up to it.",
