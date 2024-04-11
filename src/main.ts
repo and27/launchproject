@@ -1,4 +1,11 @@
 import "./style.css";
+import "./styles/language_switcher.css";
+import "./styles/profile.css";
+import "./styles/roadmap.css";
+import "./styles/homepage.css";
+import "./styles/form.css";
+import "./styles/footer.css";
+
 import { setupLottie } from "./utils/setupLottie.ts";
 import { setupLogin } from "./utils/login.ts";
 import { setupRoutes } from "./utils/routes.ts";

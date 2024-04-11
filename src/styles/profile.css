@@ -1,0 +1,50 @@
+/* profile */
+.profile__projects-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1em;
+  padding-block: var(--spacing-xlarge);
+  cursor: pointer;
+}
+
+.profile__projects-card {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  border-radius: 8px;
+  background-color: var(--color-secondary-black);
+  border: 2px solid var(--color-secondary-black);
+}
+
+.profile__projects-img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  height: 100px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+  filter: grayscale();
+}
+
+.profile__projects-title {
+  margin-inline: var(--spacing-medium);
+  margin-block: var(--spacing-medium);
+  font-weight: 700;
+}
+
+.profile__projects-progress {
+  width: 100%; /* Adjust width as needed */
+  height: 20px; /* Adjust height as needed */
+  background-color: #f0f0f0; /* Background color of the progress bar container */
+  border-radius: 5px; /* Adjust border radius as needed */
+}
+
+.profile__projects-progress-bar {
+  width: 50%; /* Adjust width to set the progress */
+  height: 100%; /* Maintain full height of the progress bar */
+  background-color: #4caf50; /* Color of the progress bar */
+  border-radius: 5px; /* Adjust border radius as needed */
+}

@@ -1,0 +1,20 @@
+/* footer */
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  padding-block: var(--spacing-xlarge);
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-base);
+}
+
+.footer__logo {
+  height: 30px;
+}

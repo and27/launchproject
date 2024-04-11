@@ -1,0 +1,60 @@
+/*# form  */
+.form__container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding-block: var(--spacing-xxlarge);
+}
+
+.form__content {
+  margin-block-end: var(--spacing-xxlarge);
+  text-align: center;
+}
+
+.form__question-container {
+  margin-block-end: var(--spacing-xlarge);
+  border-style: none;
+  padding: 0;
+}
+
+fieldset label {
+  padding: 1em;
+  border-width: 2px;
+  border-color: var(--color-secondary-black);
+  border-style: solid;
+  /* box-shadow: 2px 3px var(--color-secondary-black); */
+  background-color: transparent;
+  width: 100%;
+  margin-block-start: 1em;
+  border-radius: 10px;
+}
+
+fieldset label:hover {
+  border-color: #bbb;
+}
+
+fieldset label:focus-within {
+  border-color: #bbb;
+}
+
+fieldset[aria-invalid="true"] {
+  padding-inline: var(--spacing-base);
+  border: 1px solid var(--color-primary-red);
+}
+
+.form__radio-container {
+  display: flex;
+  gap: 16px;
+}
+
+.form__project-name {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+  margin-block-end: var(--spacing-large);
+}
+
+.form__project-input {
+  border-radius: 8px;
+  padding: 1em;
+  border: none;
+}
