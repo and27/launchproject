@@ -1,5 +1,6 @@
 import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import { englishRoadmap, spanishRoadmap } from "../data/translations/roadmap";
 i18next.use(LanguageDetector).init({
   fallbackLng: "en",
 
@@ -21,19 +22,23 @@ i18next.use(LanguageDetector).init({
         roadmapInstructionsGuide: "If you need help, download the",
         roadmapResponseTitle: "Share your findings",
         roadmapFeedbackTitle: "Your feedback",
+        roadmapFeedbackDefault: "Please fill out the field above.",
+        roadmapFeedbackDemo:
+          "Would you like to receive experts feedback on your findings?",
+        roadmapFeedbackCTA: "ScheduleSession",
         // roadmapStages
-        ideaTitle: "Idea Generation",
-        evaluationTitle: "Preliminary Evaluation",
-        conceptTitle: "Concept Development",
-        businessModelTitle: "Concept Development",
-        mvpTitle: "Construction of the MVP",
-        mvpStrategyTitle: "MVP Strategy",
-        mvpLaunchTitle: "Launch of the MVP",
-        validationTitle: "Validation of the Idea",
-        pitchTitle: "Communication - Pitch",
-        adaptationTitle: "Adaptation",
-        marketingTitle: "Marketing",
-        launchTitle: "Launch",
+        idea: englishRoadmap.idea,
+        evaluation: englishRoadmap.evaluation,
+        concept: englishRoadmap.concept,
+        businessModel: englishRoadmap.businessModel,
+        mvp: englishRoadmap.mvp,
+        mvpStrategy: englishRoadmap.mvpStrategy,
+        mvpLaunch: englishRoadmap.mvpLaunch,
+        validation: englishRoadmap.validation,
+        pitch: englishRoadmap.pitch,
+        adaptation: englishRoadmap.adaptation,
+        marketing: englishRoadmap.marketing,
+        launch: englishRoadmap.launch,
       },
     },
 
@@ -54,19 +59,23 @@ i18next.use(LanguageDetector).init({
         roadmapResponseTitle: "Comparte tus hallazgos",
         roadmapFeedbackTitle: "Tu retroalimentación",
         loginButton: "Ingresar",
+        roadmapFeedbackDefault: "Por favor complete el campo anterior.",
+        roadmapFeedbackDemo:
+          "¿Te gustaría recibir comentarios de expertos sobre tus hallazgos?",
+        roadmapFeedbackCTA: "Agendar sesión",
         // roadmapStages
-        ideaTitle: "Generación de Ideas",
-        evaluationTitle: "Evaluación Preliminar",
-        conceptTitle: "Desarrollo del Concepto",
-        businessModelTitle: "Modelo de Negocio",
-        mvpTitle: "Construcción del MVP",
-        mvpStrategyTitle: "Estrategia del MVP",
-        mvpLaunchTitle: "Lanzamiento del MVP",
-        validationTitle: "Validación de la Idea",
-        pitchTitle: "Comunicación - Presentación",
-        adaptationTitle: "Adaptación",
-        marketingTitle: "Marketing",
-        launchTitle: "Lanzamiento",
+        idea: spanishRoadmap.idea,
+        evaluation: spanishRoadmap.evaluation,
+        concept: spanishRoadmap.concept,
+        businessModel: spanishRoadmap.businessModel,
+        mvp: spanishRoadmap.mvp,
+        mvpStrategy: spanishRoadmap.mvpStrategy,
+        mvpLaunch: spanishRoadmap.mvpLaunch,
+        validation: spanishRoadmap.validation,
+        pitch: spanishRoadmap.pitch,
+        adaptation: spanishRoadmap.adaptation,
+        marketing: spanishRoadmap.marketing,
+        launch: spanishRoadmap.launch,
       },
     },
   },
@@ -95,3 +104,7 @@ export const getRoadmapInstructionsGuide = () =>
   i18next.t("roadmapInstructionsGuide");
 export const getRoadmapResponseTitle = () => i18next.t("roadmapResponseTitle");
 export const getRoadmapFeedbackTitle = () => i18next.t("roadmapFeedbackTitle");
+export const getRoadmapFeedbackDefault = () =>
+  i18next.t("roadmapFeedbackDefault");
+export const getRoadmapFeedbackDemo = () => i18next.t("roadmapFeedbackDemo");
+export const getRoadmapFeedbackCTA = () => i18next.t("roadmapFeedbackCTA");

@@ -17,10 +17,10 @@ const tabsWrapper = (children: any) => {
 };
 
 const createTabs = (props: ITabsProps) => {
-  const { step, titleKey, active, blocked, idx } = props;
+  const { step, name: roadmapName, active, blocked, idx } = props;
   const blockedClass = blocked ? "roadmap__stage--blocked" : "";
   const activeClass = active ? "roadmap__stage--active" : "";
-  const title = i18next.t(titleKey);
+  const title = i18next.t(`${roadmapName}.title`);
 
   const tab = `
     <button id="tab${step}" class="roadmap__stage ${blockedClass} ${activeClass}

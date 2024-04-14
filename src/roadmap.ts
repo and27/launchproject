@@ -8,6 +8,9 @@ import {
   getRoadmapResponseTitle,
   getRoadmapFeedbackTitle,
   getRoadmapInstructionsGuide,
+  getRoadmapFeedbackDefault,
+  getRoadmapFeedbackCTA,
+  getRoadmapFeedbackDemo,
 } from "./utils/int8";
 import i18next from "i18next";
 
@@ -25,18 +28,17 @@ export function setupRoadmap(page: HTMLElement) {
 }
 
 function createRoadmapStageContent(props: any) {
-  const {
-    titleKey,
-    description,
-    question,
-    instructions,
-    step,
-    name,
-    video,
-    idx,
-  } = props;
-  const title = i18next.t(titleKey);
+  const { name: roadmapName, step, name, video, idx } = props;
+
+  const title = i18next.t(`${roadmapName}.title`);
+  const description = i18next.t(`${roadmapName}.description`);
+  const question = i18next.t(`${roadmapName}.question`);
+  const instructions = i18next.t(`${roadmapName}.instructions`, {
+    returnObjects: true,
+  });
+
   const DEFAULT_SELECTED_STAGE = 0;
+
   return `
   <div class="roadmap__day-content roadmap__day-content${
     idx === DEFAULT_SELECTED_STAGE ? "--active" : ""
@@ -47,8 +49,9 @@ function createRoadmapStageContent(props: any) {
  <iframe width="100%" class="roadmap__video" src="https://www.youtube.com/embed/${video}" title="Roadmap video ${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   <h2 class="roadmap__instructions-title">${getRoadmapInstructionsTitle()}</h2>
   <ol class="roadmap__instructions">
-  ${instructions
-    .map((instruction: string) => `<li>${instruction}</li>`)
+
+  ${(instructions as string[])
+    ?.map((instruction: string) => `<li>${instruction}</li>`)
     .join("")}
   </ol>
   <p class="roadmap__instructions-guide">${getRoadmapInstructionsGuide()} <a href="/ideation.pdf" download="ideation.pdf" class="roadmap__guide">ideation guide</a> 
@@ -61,15 +64,15 @@ function createRoadmapStageContent(props: any) {
     <button type="submit" class="roadmap__btn">Send</button>
     
     <h2 class="roadmap__feedback-title">${getRoadmapFeedbackTitle()} </h2>
-    <p class="roadmap__ai-feedback">Please fill out the field above.</p>
+    <p class="roadmap__ai-feedback">${getRoadmapFeedbackDefault()}</p>
   </form>
 
   <div class="roadmap__feedback">
   <div class="roadmap__feedback-content">
-   <p>Would you like to receive experts feedback on your findings?</p>
+   <p>${getRoadmapFeedbackDemo()}</p>
    <p>Schedule a free 1:1 session with one of our mentors.</p>
   </div>
-   <a class="roadmap__feedback-btn" target="_blank" href="https://andresbanda.com/contact">Schedule session</a>
+   <a class="roadmap__feedback-btn" target="_blank" href="https://andresbanda.com/contact">${getRoadmapFeedbackCTA()}</a>
   </div>
   `;
 }
