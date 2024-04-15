@@ -8,7 +8,7 @@ import i18next from "i18next";
 //todo: add block icon to the blocked tabs
 const tabsWrapper = (children: any) => {
   return `
-    <div class="roadmap__day-wrapper">
+    <div class="roadmap__stage-wrapper">
     ${children}
     <div id="tooltip-2" role="tooltip">
       Complete the previous stages first
@@ -23,13 +23,13 @@ const createTabs = (props: ITabsProps) => {
   const title = i18next.t(`${roadmapName}.title`);
 
   const tab = `
-    <button id="tab${step}" class="roadmap__stage ${blockedClass} ${activeClass}
-    }" aria-controls="stage${step}" type="button" role="tab" tabindex="${
+    <button id="tab${step}" class="roadmap__stage ${blockedClass} ${activeClass}" aria-controls="stage${step}" type="button" role="tab" tabindex="${
     active ? 0 : "-1"
   }">${idx} ${title} ${blocked ? Lock : ""}</button>
     `;
   return blocked ? tabsWrapper(tab) : tab;
 };
+
 export const createTabsAnimation = (page: HTMLElement) => {
   const roadmap = page.querySelector(".roadmap__container")! as HTMLDivElement;
   const tabs = roadmap.querySelectorAll(".roadmap__stage");
@@ -42,6 +42,7 @@ export const createTabsAnimation = (page: HTMLElement) => {
     );
   });
 };
+
 export const populateTabs = (page: HTMLElement) => {
   const roadmap = page.querySelector(".roadmap__container")! as HTMLDivElement;
   const tabs = roadmap.querySelector(".roadmap__days")! as HTMLDivElement;
