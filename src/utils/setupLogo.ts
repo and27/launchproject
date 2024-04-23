@@ -1,6 +1,8 @@
 import { logoSVG } from "../components/logoSVG";
 
 export const setupLogo = () => {
-  const logo = document.querySelector(".logo");
-  if (logo) logo.innerHTML = logoSVG;
+  const logos = document.querySelectorAll(".logo");
+  if (logos.length >= 0) {
+    Array.from(logos).map((logo) => (logo.innerHTML = logoSVG));
+  }
 };
