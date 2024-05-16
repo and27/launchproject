@@ -28,7 +28,7 @@ export function setupRoadmap(page: HTMLElement) {
 }
 
 function createRoadmapStageContent(props: any) {
-  const { name: roadmapName, step, name, video, idx } = props;
+  const { name: roadmapName, step, name, idx } = props;
 
   const title = i18next.t(`${roadmapName}.title`);
   const description = i18next.t(`${roadmapName}.description`);

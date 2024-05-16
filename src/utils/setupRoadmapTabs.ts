@@ -3,6 +3,7 @@ import { ITabsProps } from "../types/roadmap";
 import { roadmapStageType } from "../data/roadmapStages";
 import Lock from "../components/lock";
 import i18next from "i18next";
+import { Trophy } from "../components/trophySVG";
 
 //this wrapper is needed to add the tooltip to the blocked tabs
 //todo: add block icon to the blocked tabs
@@ -56,4 +57,5 @@ export const populateTabs = (page: HTMLElement) => {
       idx: idx + 1,
     });
   });
+  tabs.innerHTML += Trophy;
 };
