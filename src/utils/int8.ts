@@ -54,12 +54,12 @@ i18next.use(LanguageDetector).init({
         homePageBenefitsTitle: "¿Cómo funciona?",
         homePageBenefitsDescription:
           "Launch es tu socio esencial para convertir esa chispa de una idea en un producto o servicio listo para el mercado. No se necesita experiencia previa; todo lo que necesitas es una visión, y nosotros proporcionamos el camino a seguir.",
-        roadmapInstructionsTitle: "Prepara tu arsenal",
+        roadmapInstructionsTitle: "¡Todo empieza aquí!",
         roadmapInstructionsGuide: "Si necesitas ayuda, descarga la",
         roadmapResponseTitle: "Comparte tus hallazgos",
-        roadmapFeedbackTitle: "Tu retroalimentación",
+        roadmapFeedbackTitle: "Espera la magia",
         loginButton: "Ingresar",
-        roadmapFeedbackDefault: "Por favor complete el campo anterior.",
+        roadmapFeedbackDefault: "Primero debes completar el paso anterior.",
         roadmapFeedbackDemo:
           "¿Te gustaría recibir comentarios de expertos sobre tus hallazgos?",
         roadmapFeedbackCTA: "Agendar sesión",

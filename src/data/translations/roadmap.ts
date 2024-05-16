@@ -1,11 +1,13 @@
 export const spanishRoadmap = {
   idea: {
     title: "Generación de Ideas",
-    description: "Generemos una lista de posibles ideas de negocio.",
+    description:
+      "¿Estás listo para generar una lista de posibles ideas de negocio en menos de 15 minutos?",
+
     instructions: [
-      "Realiza una sesión de lluvia de ideas individual o en equipo.",
-      "Identifica problemas o necesidades en el mercado que podrían abordarse.",
-      "Investiga tendencias emergentes y oportunidades.",
+      "Pregúntame sobre mis intereses, habilidades y recursos que tengo relacionadas con este sector.",
+      "Pide detalles sobre cualquier idea previa que haya tenido pero que no he desarrollado completamente.",
+      "Genera una lista de 10 ideas innovadoras basadas en problemas reales y en la información que te proporciono.",
     ],
     question:
       "Por favor, enumera al menos tres ideas de negocio que tengas en mente, separadas por saltos de línea o comas.",
