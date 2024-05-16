@@ -45,35 +45,65 @@ function createRoadmapStageContent(props: any) {
   }" id="stage${step}" role="tabpanel"  aria-labelledby="tab${step}" tabindex="0">
 
  <h1 class="roadmap__title">${title}</h1>
+ <img class="roadmap__banner-img" alt="roadmap banner" src="cat2.webp" />
  <p>${description}</p>
- <iframe width="100%" class="roadmap__video" src="https://www.youtube.com/embed/${video}" title="Roadmap video ${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  <h2 class="roadmap__instructions-title">${getRoadmapInstructionsTitle()}</h2>
-  <ol class="roadmap__instructions">
 
+ <section class="roadmap__section">
+  <p class="roadmap__step">Paso 1</p>
+  <h2 class="roadmap__instructions-title">${getRoadmapInstructionsTitle()}</h2>
+  <p>Usa el siguiente prompt para obtener ideas de negocio:</p>
+ <div class="roadmap__instructions-container .roboto-mono-test">
+ <p> Hola [chatGPT], necesito desarrollar nuevas ideas de negocio en el área de [ingresa tu especialidad]. Para ayudarme a empezar: 
+</p> 
+ <ol class="roadmap__instructions">
   ${(instructions as string[])
     ?.map((instruction: string) => `<li>${instruction}</li>`)
     .join("")}
   </ol>
-  <p class="roadmap__instructions-guide">${getRoadmapInstructionsGuide()} <a href="/ideation.pdf" download="ideation.pdf" class="roadmap__guide">ideation guide</a> 
+</div> 
+<p class="roadmap__instructions-guide">${getRoadmapInstructionsGuide()} <a href="/ideation.pdf" download="ideation.pdf" class="roadmap__guide">ideation guide</a> 
   .</p>
+</section>
 
+
+<section class="roadmap__section">
+  <p class="roadmap__step">Paso 2</p>
   <form class="roadmap__form">
     <h2 class="roadmap__form-title">${getRoadmapResponseTitle()}</h2>
     <p>${question}</p>
     <textarea class="roadmap__input" id="${name}" name="${name}" rows="4" cols="50" data-question-id=${step}></textarea>
     <button type="submit" class="roadmap__btn">Send</button>
-    
-    <h2 class="roadmap__feedback-title">${getRoadmapFeedbackTitle()} </h2>
-    <p class="roadmap__ai-feedback">${getRoadmapFeedbackDefault()}</p>
   </form>
+ </section>
 
+ <section class="roadmap__section">
+  <p class="roadmap__step">Paso 3</p>
+  <h2 class="roadmap__feedback-title">${getRoadmapFeedbackTitle()} </h2>
+  <p class="roadmap__ai-feedback">${getRoadmapFeedbackDefault()}</p>
+  <div class="roadmap__feedback-avatar">
+  <img class="roadmap__feedback-img" alt="roadmap banner" src="cat3.png" />
+  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" viewBox="0 0 100 20">
+  <circle cx="15" cy="10" r="5" fill="#ddd">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite" begin="0s"/>
+  </circle>
+  <circle cx="50" cy="10" r="5" fill="#ddd">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite" begin="0.2s"/>
+  </circle>
+  <circle cx="85" cy="10" r="5" fill="#ddd">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite" begin="0.4s"/>
+  </circle>
+</svg>
+</div>
+
+  
   <div class="roadmap__feedback">
-  <div class="roadmap__feedback-content">
-   <p>${getRoadmapFeedbackDemo()}</p>
-   <p>Schedule a free 1:1 session with one of our mentors.</p>
+    <div class="roadmap__feedback-content">
+     <p>${getRoadmapFeedbackDemo()}</p>
+     <p>Schedule a free 1:1 session with one of our mentors.</p>
+    </div>
+    <a class="roadmap__feedback-btn" target="_blank" href="https://andresbanda.com/contact">${getRoadmapFeedbackCTA()}</a>
   </div>
-   <a class="roadmap__feedback-btn" target="_blank" href="https://andresbanda.com/contact">${getRoadmapFeedbackCTA()}</a>
-  </div>
+  </section>
   `;
 }
 
