@@ -85,6 +85,7 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-small);
+  max-inline-size: 100%;
 }
 
 .roadmap__stage-wrapper::after {
@@ -115,6 +116,12 @@
   opacity: 0.4;
 }
 
+.roadmap__stage-wrapper--blocked button {
+  cursor: not-allowed;
+  display: flex;
+  justify-content: space-between;
+}
+
 .roadmap__stage-icon {
   width: 24px;
   height: 24px;
@@ -129,8 +136,9 @@
   color: #ccc;
   cursor: pointer;
   background-color: var(--color-secondary-black);
-  inline-size: 100%;
   text-align: left;
+  max-inline-size: 100%;
+  flex-basis: 100%;
 }
 
 .roadmap__stage svg {
