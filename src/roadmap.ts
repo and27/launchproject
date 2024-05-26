@@ -165,7 +165,6 @@ const getAIFeedback = async (promptValue: string) => {
         ".roadmap__ai-feedback"
       ) as HTMLElement) || document.createElement("p");
     apiResponseParagraph.innerHTML = "";
-
     reader.read().then(function processText({ done, value }): any {
       if (done) {
         console.log("Stream completo");

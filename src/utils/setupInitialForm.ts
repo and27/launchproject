@@ -138,28 +138,34 @@ const saveSurveyAndGenerateRoadmap = async (projectName: string) => {
 
   const userId = localStorage.getItem("userId");
 
-  const { error: projectError, data: projectData } = await addProject({
-    name: projectName,
-    user_id: userId,
-  });
+  try {
+    const { error: projectError, data: projectData } = await addProject({
+      name: projectName,
+      user_id: userId,
+    });
 
-  const dataToSend = {
-    user: userId,
-    ...userAnswers,
-    mvp_launch: userAnswers.mvpLaunch,
-    project: projectData![0].id,
-  };
+    if (projectError || !projectData || !projectData[0]) {
+      throw new Error("Error creating project or project data is invalid");
+    }
 
-  const { error } = await addProjectSurvey(dataToSend);
+    const dataToSend = {
+      user: userId,
+      ...userAnswers,
+      mvp_launch: userAnswers.mvpLaunch,
+      project: projectData![0].id,
+    };
+    const { error: surveyError } = await addProjectSurvey(dataToSend);
 
-  if (projectError) console.error(projectError);
-  if (error) console.error(error);
-  else {
-    const projectId = projectData![0].id;
-    const path = generateLearningPath(userAnswers);
-    localStorage.setItem("learningPath", JSON.stringify(path));
-    localStorage.setItem("projectId", projectId.toString());
-    goToRoadmap();
+    if (surveyError) console.error("Error saving project survey:", surveyError);
+    else {
+      const projectId = projectData[0].id;
+      const path = generateLearningPath(userAnswers);
+      localStorage.setItem("learningPath", JSON.stringify(path));
+      localStorage.setItem("projectId", projectId.toString());
+      goToRoadmap();
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
 

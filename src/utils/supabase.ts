@@ -49,6 +49,7 @@ export const addProjectSurvey = async (survey: any) => {
     mvp_launch: survey.mvp_launch,
     project: survey.project,
   };
+
   const { data, error } = await supabase
     .from("project_survey")
     .insert(surveyInfo)

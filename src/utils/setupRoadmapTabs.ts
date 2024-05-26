@@ -26,7 +26,7 @@ const createTabs = (props: ITabsProps) => {
   const tab = `
     <button id="tab${step}" class="roadmap__stage ${blockedClass} ${activeClass}" aria-controls="stage${step}" type="button" role="tab" tabindex="${
     active ? 0 : "-1"
-  }">${idx} ${title} ${blocked ? Lock : ""}</button>
+  }">${title} ${blocked ? Lock : ""}</button>
     `;
   return blocked ? tabsWrapper(tab) : tab;
 };
