@@ -4,7 +4,7 @@ export const Trophy = `
    height="14.74205mm"
    viewBox="0 0 126.01277 154.74205"
    id="svg5"
-   style="left:-20px; position:absolute; bottom:-60px; opacity:0.5"
+   style="position:absolute; bottom:-75px; opacity:0.4"
   <defs
      id="defs2">
     <clipPath

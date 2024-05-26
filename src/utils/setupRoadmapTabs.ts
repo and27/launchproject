@@ -18,16 +18,23 @@ const tabsWrapper = (children: any) => {
 };
 
 const createTabs = (props: ITabsProps) => {
-  const { step, name: roadmapName, active, blocked, idx } = props;
-  const blockedClass = blocked ? "roadmap__stage--blocked" : "";
-  const activeClass = active ? "roadmap__stage--active" : "";
+  const { step, name: roadmapName, active, blocked } = props;
+  const blockedClass = blocked ? "roadmap__stage-wrapper--blocked" : "";
+  const activeClass = active ? "roadmap__stage-wrapper--active" : "";
   const title = i18next.t(`${roadmapName}.title`);
+  const img = `${roadmapName}.png`;
 
   const tab = `
-    <button id="tab${step}" class="roadmap__stage ${blockedClass} ${activeClass}" aria-controls="stage${step}" type="button" role="tab" tabindex="${
+  <div class="roadmap__stage-wrapper ${blockedClass} ${activeClass}">
+
+    <img class="roadmap__stage-icon" src=${img} alt="roadmap icon" />
+    <button id="tab${step}" class="roadmap__stage" aria-controls="stage${step}" type="button" role="tab" tabindex="${
     active ? 0 : "-1"
-  }">${title} ${blocked ? Lock : ""}</button>
-    `;
+  }">
+        ${title} ${blocked ? Lock : ""}
+    </button>
+    
+  </div>`;
   return blocked ? tabsWrapper(tab) : tab;
 };
 
@@ -52,8 +59,8 @@ export const populateTabs = (page: HTMLElement) => {
   roadmapData.map((stage: roadmapStageType, idx: number) => {
     tabs.innerHTML += createTabs({
       ...stage,
-      active: idx === 0,
-      blocked: idx > 2,
+      active: idx === 1,
+      blocked: idx > 1,
       idx: idx + 1,
     });
   });
