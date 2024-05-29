@@ -86,7 +86,8 @@ function createRoadmapStageContent(props: any) {
  <img class="roadmap__img" alt="roadmap banner" src="bot.png" />
 
  <section class="roadmap__section">
-  <h2 class="roadmap__instructions-title">${getRoadmapInstructionsTitle()}</h2>
+  <h2 class="roadmap__instructions-title"> <span class="roadmap__step">1</span>
+  ${getRoadmapInstructionsTitle()}</h2>
   <p>Usa el siguiente prompt para obtener ideas de negocio. Copia y pega en tu agente inteligente favorito (chatGPT, gemini, etc). </p>
  <div class="roadmap__instructions-container .roboto-mono-test">
  <p> Hola [chatGPT], necesito desarrollar nuevas ideas de negocio en el área de [ingresa tu especialidad]. Para ayudarme a empezar: 
@@ -102,7 +103,9 @@ function createRoadmapStageContent(props: any) {
 
 <section class="roadmap__section">
   <form class="roadmap__form">
-    <h2 class="roadmap__form-title">${getRoadmapResponseTitle()}</h2>
+    <h2 class="roadmap__form-title">
+    <span class="roadmap__step">2</span>
+    ${getRoadmapResponseTitle()}</h2>
     <p>${question}</p>
     <textarea class="roadmap__input" id="${name}" name="${name}" rows="4" cols="50" data-question-id=${step}></textarea>
     <button type="submit" class="roadmap__btn">Send</button>
@@ -110,7 +113,9 @@ function createRoadmapStageContent(props: any) {
  </section>
 
  <section class="roadmap__section">
-  <h2 class="roadmap__feedback-title">${getRoadmapFeedbackTitle()} </h2>
+  <h2 class="roadmap__feedback-title">
+  <span class="roadmap__step">3</span>
+  ${getRoadmapFeedbackTitle()} </h2>
   <p class="roadmap__ai-feedback">${getRoadmapFeedbackDefault()}</p>
   <div class="roadmap__feedback-avatar">
   <img class="roadmap__feedback-img" alt="roadmap banner" src="bot2.png" />
