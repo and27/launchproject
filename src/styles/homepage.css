@@ -29,10 +29,6 @@
   margin-block-end: var(--spacing-large);
 }
 
-.header__highlight {
-  border-block-end: 4px solid var(--color-primary-red);
-}
-
 .header__text {
   margin-block-end: var(--spacing-medium);
 }
@@ -60,6 +56,11 @@
   }
 }
 
+.header__button {
+  background-color: var(--color-primary-purple);
+  color: var(--color-primary-white);
+}
+
 .header__button--outline {
   text-decoration: none;
   color: var(--color-primary-white);
@@ -67,7 +68,6 @@
 
 .header__button--outline:hover,
 .navigation__button--outline:hover {
-  /* box-shadow: 3px 3px var(--color-primary-black); */
   border-color: var(--color-primary-black);
   background-color: #212121;
 }

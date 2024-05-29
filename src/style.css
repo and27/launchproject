@@ -320,6 +320,12 @@ button:disabled {
     width: 140px;
   }
 }
+
+.lang-switcher {
+  background-color: var(--color-secondary-black);
+  color: var(--color-primary-white);
+}
+
 .navigation__button--outline {
   width: 140px;
 
