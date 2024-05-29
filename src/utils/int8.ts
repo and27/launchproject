@@ -53,7 +53,7 @@ i18next.use(LanguageDetector).init({
           "Empieza a construir tu startup ahora. Sigue nuestros pasos y mira cómo tu idea se convierte en un proyecto exitoso.",
         homePageBenefitsTitle: "¿Cómo funciona?",
         homePageBenefitsDescription:
-          "Launch es tu socio esencial para convertir esa chispa de una idea en un producto o servicio listo para el mercado. No se necesita experiencia previa; todo lo que necesitas es una visión, y nosotros proporcionamos el camino a seguir.",
+          "Launch te ayuda a convertir tus ideas en un producto o servicio listo para el mercado. No se necesita experiencia previa; todo lo que necesitas es crear tu visión, y nosotros te proporcionamos el camino a seguir.",
         roadmapInstructionsTitle: "Empieza aquí",
         roadmapInstructionsGuide: "Si necesitas ayuda, descarga la",
         roadmapResponseTitle: "Comparte tus hallazgos",

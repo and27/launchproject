@@ -2,7 +2,7 @@ export const spanishRoadmap = {
   idea: {
     title: "Generación de Ideas",
     description:
-      "¿Estás listo para generar una lista de posibles ideas de negocio en menos de 15 minutos?",
+      "¿Estás listo para generar una lista de posibles ideas de negocio en menos de 15 minutos?. Solo sigue los siguientes pasos y descubre la magia.",
 
     instructions: [
       "Pregúntame sobre mis intereses, habilidades y recursos que tengo relacionadas con este sector.",
