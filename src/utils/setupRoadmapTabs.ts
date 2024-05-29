@@ -54,8 +54,8 @@ export const populateTabs = (page: HTMLElement) => {
   roadmapData.map((stage: roadmapStageType, idx: number) => {
     tabs.innerHTML += createTabs({
       ...stage,
-      active: idx === 1,
-      blocked: idx > 1,
+      active: idx === 0,
+      blocked: idx > 0,
       idx: idx + 1,
     });
   });

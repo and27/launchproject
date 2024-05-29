@@ -54,22 +54,59 @@
   margin-block-end: var(--spacing-large);
 }
 
-.roadmap__content .roadmap__step {
+.roadmap__label {
   background-color: var(--color-primary-purple);
+  font-weight: 600;
+  letter-spacing: 1px;
   border-radius: 2px;
   padding: 3px var(--spacing-medium);
   display: inline;
   font-size: var(--font-size-small);
   text-transform: uppercase;
+  margin-block-end: var(--spacing-medium);
+}
+
+.roadmap__btn {
+  margin-block-start: var(--spacing-large);
 }
 
 .roadmap__content h2 {
-  margin-block-start: var(--spacing-small);
+  margin-block-start: var(--spacing-base);
   margin-block-end: var(--spacing-medium);
 }
 
 .roadmap__title {
   margin-block-end: var(--spacing-xlarge);
+}
+
+.roadmap__description {
+  font-size: 1.1rem;
+  background-color: var(--color-secondary-black);
+  color: var(--color-primary-white);
+  border-radius: 18px;
+  padding: var(--spacing-base) var(--spacing-medium);
+  position: relative;
+}
+
+.roadmap__description::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 60px;
+  width: 0;
+  height: 0;
+  border: 25px solid transparent;
+  border-top-color: var(--color-secondary-black);
+  border-bottom: 0;
+  border-right: 25px;
+  margin-left: -25px;
+  margin-bottom: -25px;
+}
+
+.roadmap__img {
+  width: 120px;
+  object-fit: cover;
+  margin-block-end: var(--spacing-large);
 }
 
 .roadmap__days {

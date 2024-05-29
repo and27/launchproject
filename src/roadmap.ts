@@ -7,7 +7,6 @@ import {
   getRoadmapInstructionsTitle,
   getRoadmapResponseTitle,
   getRoadmapFeedbackTitle,
-  getRoadmapInstructionsGuide,
   getRoadmapFeedbackDefault,
   getRoadmapFeedbackCTA,
   getRoadmapFeedbackDemo,
@@ -24,7 +23,43 @@ export function setupRoadmap(page: HTMLElement) {
   addClickListenersOnTabs(page);
   createTabsAnimation(page);
   addSubmitListenersOnForms(page);
+  const currStage = localStorage.getItem("currStage");
+  if (!currStage) {
+    localStorage.setItem("currStage", "0");
+  }
   document.addEventListener("keydown", keyboardNavigation);
+
+  completeStage();
+}
+
+function completeStage() {
+  const roadmapCompleteBtn = document.querySelector(".roadmap__btn--complete");
+
+  document.addEventListener("click", (e) => {
+    const currStage = localStorage.getItem("currStage");
+    if (!currStage) return;
+
+    if (e.target === roadmapCompleteBtn) {
+      const roadmap = document.querySelector(
+        ".roadmap__container"
+      )! as HTMLDivElement;
+
+      const stages = roadmap.querySelectorAll(".roadmap__stage-wrapper");
+      const allowedStages = Array.from(stages);
+      const current = allowedStages[parseInt(currStage)];
+      const nextStageIdx = parseInt(currStage) + 1;
+      const nextStage = allowedStages[nextStageIdx] as HTMLElement;
+      nextStage.querySelector("button")?.removeAttribute("disabled");
+      nextStage.querySelector("button")?.focus();
+      current?.classList.remove("roadmap__stage-wrapper--active");
+      nextStage?.classList.add("roadmap__stage-wrapper--active");
+      nextStage.classList.remove("roadmap__stage-wrapper--blocked");
+      nextStage.querySelector("svg")?.remove();
+      const tooltip = nextStage.querySelector('div[role="tooltip"]');
+      tooltip?.remove();
+      localStorage.setItem("currStage", nextStageIdx.toString());
+    }
+  });
 }
 
 function createRoadmapStageContent(props: any) {
@@ -44,14 +79,15 @@ function createRoadmapStageContent(props: any) {
     idx === DEFAULT_SELECTED_STAGE ? "--active" : ""
   }" id="stage${step}" role="tabpanel"  aria-labelledby="tab${step}" tabindex="0">
 
+ 
+ <p class="roadmap__label">Actual</p> 
  <h1 class="roadmap__title">${title}</h1>
- <img class="roadmap__banner-img" alt="roadmap banner" src="cat2.webp" />
- <p>${description}</p>
+ <p class="roadmap__description">${description}</p>
+ <img class="roadmap__img" alt="roadmap banner" src="bot.png" />
 
  <section class="roadmap__section">
-  <p class="roadmap__step">Paso 1</p>
   <h2 class="roadmap__instructions-title">${getRoadmapInstructionsTitle()}</h2>
-  <p>Usa el siguiente prompt para obtener ideas de negocio:</p>
+  <p>Usa el siguiente prompt para obtener ideas de negocio. Copia y pega en tu agente inteligente favorito (chatGPT, gemini, etc). </p>
  <div class="roadmap__instructions-container .roboto-mono-test">
  <p> Hola [chatGPT], necesito desarrollar nuevas ideas de negocio en el área de [ingresa tu especialidad]. Para ayudarme a empezar: 
 </p> 
@@ -61,13 +97,10 @@ function createRoadmapStageContent(props: any) {
     .join("")}
   </ol>
 </div> 
-<p class="roadmap__instructions-guide">${getRoadmapInstructionsGuide()} <a href="/ideation.pdf" download="ideation.pdf" class="roadmap__guide">ideation guide</a> 
-  .</p>
 </section>
 
 
 <section class="roadmap__section">
-  <p class="roadmap__step">Paso 2</p>
   <form class="roadmap__form">
     <h2 class="roadmap__form-title">${getRoadmapResponseTitle()}</h2>
     <p>${question}</p>
@@ -77,11 +110,10 @@ function createRoadmapStageContent(props: any) {
  </section>
 
  <section class="roadmap__section">
-  <p class="roadmap__step">Paso 3</p>
   <h2 class="roadmap__feedback-title">${getRoadmapFeedbackTitle()} </h2>
   <p class="roadmap__ai-feedback">${getRoadmapFeedbackDefault()}</p>
   <div class="roadmap__feedback-avatar">
-  <img class="roadmap__feedback-img" alt="roadmap banner" src="cat3.png" />
+  <img class="roadmap__feedback-img" alt="roadmap banner" src="bot2.png" />
   <svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" viewBox="0 0 100 20">
   <circle cx="15" cy="10" r="5" fill="#ddd">
     <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite" begin="0s"/>
@@ -94,6 +126,10 @@ function createRoadmapStageContent(props: any) {
   </circle>
 </svg>
 </div>
+
+<button class="roadmap__btn--complete roadmap__btn">
+Completar
+</button>
 
   
   <div class="roadmap__feedback">
