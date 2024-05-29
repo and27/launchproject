@@ -56,6 +56,7 @@
 
 .roadmap__label {
   background-color: var(--color-primary-purple);
+  color: var(--color-primary-white);
   font-weight: 600;
   letter-spacing: 1px;
   border-radius: 2px;
@@ -71,8 +72,24 @@
 }
 
 .roadmap__content h2 {
-  margin-block-start: var(--spacing-base);
+  margin-block-start: var(--spacing-small);
   margin-block-end: var(--spacing-medium);
+}
+
+.roadmap__step {
+  padding: var(--spacing-small) var(--spacing-base);
+  background-color: var(--color-primary-black);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: inline;
+  border-radius: 8px;
+}
+
+@media (prefers-color-scheme: light) {
+  .roadmap__step {
+    background-color: var(--color-primary-white);
+    border: 1px solid var(--color-primary-black);
+  }
 }
 
 .roadmap__title {
@@ -82,7 +99,6 @@
 .roadmap__description {
   font-size: 1.1rem;
   background-color: var(--color-secondary-black);
-  color: var(--color-primary-white);
   border-radius: 18px;
   padding: var(--spacing-base) var(--spacing-medium);
   position: relative;
@@ -101,6 +117,16 @@
   border-right: 25px;
   margin-left: -25px;
   margin-bottom: -25px;
+}
+
+@media (prefers-color-scheme: light) {
+  .roadmap__description {
+    background-color: #ddd;
+  }
+
+  .roadmap__description::after {
+    border-top-color: #ddd;
+  }
 }
 
 .roadmap__img {
@@ -247,6 +273,12 @@ button.roadmap__btn {
   background-color: #222;
   border-radius: 12px;
   font-size: 14px;
+}
+
+@media (prefers-color-scheme: light) {
+  .roadmap__instructions-container {
+    background-color: #ddd;
+  }
 }
 
 .roadmap__instructions-container p,

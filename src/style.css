@@ -177,7 +177,7 @@ a.roadmap__feedback-btn {
 
 button:hover,
 a.roadmap__feedback-btn:hover {
-  background-color: white;
+  background-color: #15103f;
 }
 
 button:focus,
@@ -215,7 +215,7 @@ button:disabled {
   a.header__button--outline {
     background-color: var(--color-secondary-white);
     color: var(--color-primary-blue);
-    border: 1px solid var(--color-primary-blue);
+    border: 1px solid var(--color-secondary-black);
   }
 
   .logo #body {
@@ -252,8 +252,9 @@ button:disabled {
 
   button.navigation__button--outline,
   button.roadmap__stage--active {
-    background-color: var(--color-primary-blue);
-    color: var(--color-primary-white);
+    color: var(--color-secondary-black);
+    border: 1px solid var(--color-secondary-black);
+    background-color: var(--color-primary-white);
   }
 
   button.roadmap__stage:hover {
@@ -324,6 +325,10 @@ button:disabled {
 .lang-switcher {
   background-color: var(--color-secondary-black);
   color: var(--color-primary-white);
+}
+
+.lang-switcher:hover {
+  background-color: var(--color-primary-black);
 }
 
 .navigation__button--outline {

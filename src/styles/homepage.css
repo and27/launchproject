@@ -68,8 +68,14 @@
 
 .header__button--outline:hover,
 .navigation__button--outline:hover {
-  border-color: var(--color-primary-black);
-  background-color: #212121;
+  background-color: var(--color-primary-black);
+}
+
+@media (prefers-color-scheme: light) {
+  .header__button--outline:hover,
+  .navigation__button--outline:hover {
+    background-color: #dedede;
+  }
 }
 
 .main__title {
