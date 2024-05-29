@@ -45,16 +45,16 @@ i18next.use(LanguageDetector).init({
     es: {
       translation: {
         projectPageTitle: "Proyectos",
-        homePageTitle: "Crea tu propia",
-        homePageTitleHighlight: "empresa",
-        homePageMainButton: "Empezar",
+        homePageTitle: "LLeva tu",
+        homePageTitleHighlight: "idea al siguiente nivel",
+        homePageMainButton: "Iniciar ahora",
         homePageSecondaryButton: "Más información",
         homePageDescription:
-          "Transforma tu idea en una startup próspera en solo días, con orientación en cada paso desde el concepto hasta la financiación y la creación de marca. Experimenta la emoción del emprendimiento y observa cómo tu visión se convierte en realidad.",
+          "Empieza a construir tu startup ahora. Sigue nuestros pasos y mira cómo tu idea se convierte en un proyecto exitoso.",
         homePageBenefitsTitle: "¿Cómo funciona?",
         homePageBenefitsDescription:
           "Launch es tu socio esencial para convertir esa chispa de una idea en un producto o servicio listo para el mercado. No se necesita experiencia previa; todo lo que necesitas es una visión, y nosotros proporcionamos el camino a seguir.",
-        roadmapInstructionsTitle: "¡Todo empieza aquí!",
+        roadmapInstructionsTitle: "Empieza aquí",
         roadmapInstructionsGuide: "Si necesitas ayuda, descarga la",
         roadmapResponseTitle: "Comparte tus hallazgos",
         roadmapFeedbackTitle: "Espera la magia",
