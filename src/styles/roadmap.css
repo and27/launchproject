@@ -214,8 +214,7 @@
 }
 
 .roadmap__stage:hover {
-  border-color: var(--color-secondary-black);
-  background-color: var(--color-secondary-black);
+  background-color: var(--color-dark-purple);
 }
 
 .roadmap__day-content {

@@ -39,12 +39,10 @@
   width: 100%; /* Adjust width as needed */
   height: 20px; /* Adjust height as needed */
   background-color: #f0f0f0; /* Background color of the progress bar container */
-  border-radius: 5px; /* Adjust border radius as needed */
 }
 
 .profile__projects-progress-bar {
   width: 50%; /* Adjust width to set the progress */
   height: 100%; /* Maintain full height of the progress bar */
-  background-color: #4caf50; /* Color of the progress bar */
-  border-radius: 5px; /* Adjust border radius as needed */
+  background-color: var(--color-primary-purple); /* Color of the progress bar */
 }
