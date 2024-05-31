@@ -90,8 +90,10 @@ function createRoadmapStageContent(props: any) {
   ${getRoadmapInstructionsTitle()}</h2>
   <p>Usa el siguiente prompt para obtener ideas de negocio. Copia y pega en tu agente inteligente favorito (chatGPT, gemini, etc). </p>
  <div class="roadmap__instructions-container .roboto-mono-test">
- <p> Hola [chatGPT], necesito desarrollar nuevas ideas de negocio en el área de [ingresa tu especialidad]. Para ayudarme a empezar: 
-</p> 
+ 
+ <p> Hola [chatGPT], necesito desarrollar nuevas ideas de negocio en el área de [ingresa tu especialidad].
+</p>
+
  <ol class="roadmap__instructions">
   ${(instructions as string[])
     ?.map((instruction: string) => `<li>${instruction}</li>`)
@@ -155,11 +157,11 @@ const setSelectedStage = (
 ) => {
   const dayContents = roadmap.querySelectorAll(".roadmap__day-content");
   enabledDays.forEach((day) => {
-    day.classList.remove("roadmap__stage--active");
+    day.classList.remove("roadmap__stage-wrapper--active");
     day.setAttribute("aria-selected", "false");
     day.setAttribute("tabindex", "-1");
   });
-  day.classList.add("roadmap__stage--active");
+  day.classList.add("roadmap__stage-wrapper--active");
   day.setAttribute("aria-selected", "true");
   day.setAttribute("tabindex", "0");
 
@@ -168,8 +170,9 @@ const setSelectedStage = (
     dayContent.removeAttribute("hidden");
   });
 
+  const button = day.querySelector("button") as HTMLElement;
   const currentDayContent = roadmap.querySelector(
-    `#${day.getAttribute("aria-controls")}`
+    `#${button.getAttribute("aria-controls")}`
   );
 
   if (!currentDayContent) return;
@@ -221,10 +224,10 @@ const getAIFeedback = async (promptValue: string) => {
 
 const addClickListenersOnTabs = (page: HTMLElement) => {
   const roadmap = page.querySelector(".roadmap__container")! as HTMLDivElement;
-  const stages = roadmap.querySelectorAll(".roadmap__stage");
+  const stages = roadmap.querySelectorAll(".roadmap__stage-wrapper");
 
   const allowedStages = Array.from(stages).filter((stage) => {
-    return !stage.classList.contains("roadmap__stage--blocked");
+    return !stage.classList.contains("roadmap__stage-wrapper--blocked");
   });
 
   allowedStages.forEach((stage) => {
