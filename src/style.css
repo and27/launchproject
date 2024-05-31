@@ -269,7 +269,7 @@ button:disabled {
   }
 
   button.dropdown__option:hover {
-    background-color: #ddd;
+    background-color: var(--color-light-gray);
     color: var(--color-primary-blue);
   }
 

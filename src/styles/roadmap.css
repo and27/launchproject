@@ -121,11 +121,11 @@
 
 @media (prefers-color-scheme: light) {
   .roadmap__description {
-    background-color: #ddd;
+    background-color: var(--color-light-gray);
   }
 
   .roadmap__description::after {
-    border-top-color: #ddd;
+    border-top-color: var(--color-light-gray);
   }
 }
 
@@ -276,7 +276,7 @@ button.roadmap__btn {
 
 @media (prefers-color-scheme: light) {
   .roadmap__instructions-container {
-    background-color: #ddd;
+    background-color: var(--color-light-gray);
   }
 }
 
