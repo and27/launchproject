@@ -17,9 +17,9 @@ export const spanishRoadmap = {
     description:
       "Filtremos y prioricemos las ideas generadas en la etapa anterior.",
     instructions: [
-      "Realiza un análisis de viabilidad inicial para cada idea.",
-      "Evalúa el potencial de mercado y la competencia.",
-      "Considera los recursos disponibles, incluido el tiempo y las habilidades.",
+      " Viabilidad Técnica: ¿Es factible desarrollar esta idea con las habilidades y recursos disponibles?",
+      "Demanda del Mercado: ¿Existe una demanda real para este producto o servicio en el mercado?",
+      "Competencia: ¿Qué tan saturado está el mercado con productos o servicios similares?",
     ],
     question:
       "¿Cuál de tus ideas enumeradas te parece más prometedora y por qué?",
@@ -29,9 +29,9 @@ export const spanishRoadmap = {
     description:
       "Refinemos y definamos claramente una idea de negocio prometedora.",
     instructions: [
-      "Desarrolla una descripción detallada de la idea, incluida su propuesta de valor.",
-      "Define el mercado objetivo y el público objetivo.",
-      "Describe cómo el producto o servicio satisfará los problemas o necesidades del cliente.",
+      "Describe de manera concisa el valor que tu producto o servicio aportará a tus clientes. ¿Qué problema resuelve? ¿Qué beneficios ofrece? ¿Por qué es mejor que las alternativas existentes?",
+      "Define el público objetivo, ¿Para quién está destinado tu producto? Identifica sus necesidades, deseos y problemas específicos, considerando la demografía, psicografía y comportamiento.",
+      "Cómo llegarás a tus clientes? Especifica los canales en línea, físicos o una combinación de ambos que utilizarás.",
     ],
     question:
       "Describe brevemente tu idea de negocio refinada, su propuesta de valor y el público objetivo.",
@@ -41,10 +41,7 @@ export const spanishRoadmap = {
     description:
       "Definamos un modelo de negocio sólido que describa cómo tu idea generará ingresos, entregará valor a los clientes y se mantendrá sostenible con el tiempo.",
     instructions: [
-      "Determina cómo tu negocio generará ingresos. ¿Ofrecerás productos o servicios pagos? Explora modelos de suscripción, publicidad u otras fuentes de ingresos.",
-      "Define claramente tus segmentos de clientes clave. ¿Para quién está destinado tu producto o servicio? Identifica sus necesidades, deseos y problemas específicos.",
-      "Describe de manera concisa el valor que tu producto o servicio aportará a tus clientes. ¿Qué problema resuelve? ¿Qué beneficios ofrece?",
-      "Especifica cómo llegarás a tus clientes. ¿Utilizarás canales en línea, físicos o una combinación de ambos? ¿Cómo promocionarás y distribuirás tu producto o servicio?",
+      "Determina cómo el negocio generará ingresos. ¿Ofrecerás productos o servicios pagos? Explora modelos de suscripción, publicidad u otras fuentes de ingresos.",
       "Si es relevante, identifica posibles socios o colaboradores que podrían fortalecer tu modelo de negocio. Esto podría incluir proveedores, aliados estratégicos o plataformas de distribución.",
       "Establece los costos asociados con el funcionamiento de tu negocio. ¿Cuáles son los costos fijos y variables? ¿Cómo planeas mantenerlos bajo control?",
     ],
@@ -54,11 +51,11 @@ export const spanishRoadmap = {
   mvp: {
     title: "Construcción del MVP",
     description:
-      "Construyamos un Producto Mínimo Viable (MVP) que muestre las características principales de tu producto o servicio.",
+      "Construyamos un Producto Mínimo Viable (MVP) que tenga solo las características más escenciales de tu producto o servicio.",
     instructions: [
-      "Identifica las características esenciales que demuestran el valor de tu producto o servicio.",
-      "Desarrolla una versión simplificada de tu producto o servicio que se centre en estas características principales.",
-      "Prueba el MVP con un pequeño grupo de usuarios para recopilar comentarios e ideas.",
+      "Identifica las funcionalidades y componentes esenciales que demuestran el valor de tu producto o servicio.",
+      "Selecciona las tecnologías, herramientas o materiales más adecuados para el desarrollo rápido y eficiente de un prototipo",
+      "Lista los recursos humanos, materiales y financieros necesarios para construir el MVP (ej. chefs, ingredientes, personal de entrega, presupuesto inicial).",
     ],
     question:
       "¿Cuáles son las características principales de tu MVP y cómo demuestran el valor de tu producto o servicio?",
