@@ -13,3 +13,31 @@
 .lang__container {
   margin-inline-end: var(--spacing-small);
 }
+
+.lang-btn__icon {
+  height: 24px;
+}
+
+@media (max-width: 767px) {
+  .lang-btn {
+    width: 140px;
+  }
+}
+
+.lang-btn {
+  background-color: var(--color-secondary-black);
+  color: var(--color-primary-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-small);
+}
+
+.lang-btn svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.lang-btn:hover {
+  background-color: var(--color-primary-black);
+}

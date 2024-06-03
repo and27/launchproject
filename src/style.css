@@ -317,21 +317,6 @@ button:disabled {
   outline: none;
 }
 
-@media (max-width: 767px) {
-  .lang-switcher {
-    width: 140px;
-  }
-}
-
-.lang-switcher {
-  background-color: var(--color-secondary-black);
-  color: var(--color-primary-white);
-}
-
-.lang-switcher:hover {
-  background-color: var(--color-primary-black);
-}
-
 .navigation__button--outline {
   width: 140px;
 

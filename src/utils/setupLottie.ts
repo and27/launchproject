@@ -9,3 +9,14 @@ export function setupLottie(element: HTMLDivElement) {
     path: "/animation-lottie.json",
   });
 }
+
+export function setupGlobeLottie(element: HTMLDivElement) {
+  const animation = lottie.loadAnimation({
+    container: element,
+    renderer: "svg",
+    loop: false,
+    autoplay: false,
+    path: "/outline-globe.json",
+  });
+  return animation;
+}
