@@ -45,7 +45,7 @@ i18next.use(LanguageDetector).init({
     es: {
       translation: {
         projectPageTitle: "Proyectos",
-        homePageTitle: "LLeva tu",
+        homePageTitle: "Lleva tu",
         homePageTitleHighlight: "idea al siguiente nivel",
         homePageMainButton: "Iniciar ahora",
         homePageSecondaryButton: "Más información",
