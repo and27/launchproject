@@ -10,7 +10,11 @@ import Evaluation from "../components/icons/Evaluation";
 import Box from "../components/icons/Box";
 import Cart from "../components/icons/Cart";
 
-const icons = {
+type IconType = {
+  [key: string]: string;
+};
+
+const icons: IconType = {
   idea: Light,
   evaluation: Evaluation,
   concept: Box,
