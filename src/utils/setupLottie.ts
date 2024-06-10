@@ -10,13 +10,16 @@ export function setupLottie(element: HTMLDivElement) {
   });
 }
 
-export function setupGlobeLottie(element: HTMLDivElement) {
+export function setupGlobeLottie(lottieTheme: string, element: HTMLDivElement) {
+  const lottiePath =
+    lottieTheme === "dark" ? "/dark-globe.json" : "/light-globe.json";
+
   const animation = lottie.loadAnimation({
     container: element,
     renderer: "svg",
     loop: false,
     autoplay: false,
-    path: "/outline-globe.json",
+    path: lottiePath,
   });
   return animation;
 }
