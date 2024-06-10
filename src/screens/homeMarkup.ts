@@ -16,7 +16,7 @@ export const homeMarkup = `
       <p class="header__text">${getHomePageDescription()}</p>
       <div class="header__button-container">
         <button class="header__button">${getHomePageMainButton()}</button>
-        <a href="#howit" class="btn--secondary">${getHomePageSecondaryButton()}</a>
+        <a href="#howit" class="header__button--secondary btn--secondary">${getHomePageSecondaryButton()}</a>
       </div>
     </div>
     <div id="lottie" class="header__lottie"></div>

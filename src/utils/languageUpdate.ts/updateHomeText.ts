@@ -22,7 +22,7 @@ export function updateHomePageText() {
       ".header__title"
     )!.innerHTML = `${homePageTitle} <span class="header__highlight">${homePageTitleHighlight}</span>`;
     document.querySelector(".header__button")!.textContent = homePageMainButton;
-    document.querySelector(".header__button--outline")!.textContent =
+    document.querySelector(".header__button--secondary")!.textContent =
       homePageSecondaryButton;
     document.querySelector(".header__text")!.textContent = homePageDescription;
     document.querySelector(".main__title")!.textContent = homePageBenefitsTitle;

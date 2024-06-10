@@ -19,7 +19,7 @@
   --color-primary-purple: #20185e;
   --color-dark-purple: #1b154d;
   --color-primary-black: #070707;
-  --color-secondary-black: #1a1a1a;
+  --color-secondary-black: #1b1a1a;
   --color-dark-gray: #555;
   --color-light-gray: #ccc;
   --color-secondary-white: #eeeeee9b;
@@ -108,6 +108,10 @@ body {
   @media (min-width: 1024px) {
     margin-inline: var(--spacing-xxlarge);
   }
+
+  @media (min-width: 1440px) {
+    margin-inline: 250px;
+  }
 }
 
 section {
@@ -169,7 +173,7 @@ a.roadmap__feedback-btn {
   color: var(--color-primary-black);
   background-color: var(--color-light-gray);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: color 0.1s linear, background-color 0.1s linear;
 
   @media (min-width: 768px) {
     padding-inline: 1.2em;
@@ -231,12 +235,12 @@ button:disabled {
 
   button.roadmap__stage {
     background-color: var(--color-primary-white);
-    border: 1px solid var(--color-primary-blue);
-    color: var(--color-primary-blue);
+    border: 1px solid var(--color-secondary-black);
+    color: var(--color-secondary-black);
   }
 
   button.roadmap__stage:hover {
-    background-color: var(--color-primary-blue);
+    background-color: var(--color-primary-purple);
     color: var(--color-primary-white);
   }
 
@@ -261,19 +265,31 @@ button:disabled {
 }
 
 .navigation {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: light) {
+  .navigation {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.navigation__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-inline: var(--spacing-medium);
   gap: var(--spacing-medium);
+  max-width: 1280px;
+  margin-inline: auto;
 
   @media (min-width: 768px) {
-    padding-inline: var(--spacing-large);
+    padding-inline: var(--spacing-xxlarge);
     gap: var(--spacing-large);
   }
 
-  @media (min-width: 1024px) {
-    padding-inline: var(--spacing-xxlarge);
+  @media (min-width: 1440px) {
+    padding-inline: 250px;
   }
 }
 
@@ -287,16 +303,6 @@ button:disabled {
 .roadmap__stage--blocked:focus,
 .roadmap__stage--blocked:focus-visible {
   outline: none;
-}
-
-.navigation {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-@media (prefers-color-scheme: light) {
-  .navigation {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
 }
 
 .dropdown {
@@ -369,7 +375,7 @@ button:disabled {
   }
 
   .btn--secondary:hover {
-    background-color: var(--color-secondary-white);
+    background-color: var(--color-primary-white);
     color: var(--color-primary-black);
   }
 }
