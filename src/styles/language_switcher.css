@@ -1,11 +1,9 @@
 /* languageSwitcher */
 .navigation__content {
   display: flex;
-  flex-direction: column;
   gap: var(--spacing-small);
 
   @media (min-width: 768px) {
-    flex-direction: row;
     align-items: center;
   }
 }
@@ -16,12 +14,6 @@
 
 .lang-btn__icon {
   height: 24px;
-}
-
-@media (max-width: 767px) {
-  .lang-btn {
-    width: 140px;
-  }
 }
 
 .lang-btn {
