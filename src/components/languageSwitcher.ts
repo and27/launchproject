@@ -6,7 +6,7 @@ import { updateRoadmapPageText } from "../utils/languageUpdate.ts/updateRoadmapT
 import { setupGlobeLottie } from "../utils/setupLottie";
 
 const langSwitcherMarkup = `
-  <button id="langSwitcher" class="lang-btn">
+  <button id="langSwitcher" class="lang-btn btn--secondary">
     <div class="lang-btn__icon"></div>
     <span class="lang-btn__text"></span>
   </button>`;
