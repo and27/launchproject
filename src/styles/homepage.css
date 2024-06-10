@@ -1,14 +1,42 @@
+:root {
+  --nav-height: 117px;
+}
+
 .header__container {
-  display: flex;
-  flex-direction: column;
+  margin-top: -11px;
+  padding-top: 11px;
+}
+
+.header__container-inner {
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
   align-items: center;
-  padding-block-end: var(--spacing-large);
-  margin-block-start: 0;
+  max-width: 1280px;
+  padding-inline: var(--spacing-medium);
+  gap: var(--spacing-medium);
 
   @media (min-width: 768px) {
-    height: calc(100vh - 100px);
+    grid-template-columns: 1fr 1fr;
+    height: calc(100vh - var(--nav-height));
     flex-direction: row;
-    padding-block-end: var(--spacing-xxlarge);
+    padding-inline: var(--spacing-xxlarge);
+  }
+
+  @media (min-width: 1440px) {
+    padding-inline: 250px;
+  }
+}
+
+.header__container {
+  color: rgb(var(--background-rgb));
+  background-image: url("/background.svg");
+}
+
+@media (prefers-color-scheme: light) {
+  .header__container {
+    color: rgb(var(--foreground-rgb));
+    background-image: url("/backgroundLight.svg");
   }
 }
 
@@ -38,43 +66,20 @@
   gap: 16px;
 }
 
-.header__button--outline,
-.navigation__button--outline {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 0.8em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  background-color: var(--color-secondary-black);
-  color: var(--color-primary-white);
-
-  @media (min-width: 768px) {
-    padding-inline: 1.2em;
-  }
-}
-
 .header__button {
   background-color: var(--color-primary-purple);
   color: var(--color-primary-white);
 }
 
-.header__button--outline {
-  text-decoration: none;
-  color: var(--color-primary-white);
-}
+.main__container {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--spacing-medium);
+  padding-block: var(--spacing-medium);
 
-.header__button--outline:hover,
-.navigation__button--outline:hover {
-  background-color: var(--color-primary-black);
-}
-
-@media (prefers-color-scheme: light) {
-  .header__button--outline:hover,
-  .navigation__button--outline:hover {
-    background-color: #dedede;
+  @media (min-width: 768px) {
+    padding-inline: var(--spacing-large);
+    padding-block: var(--spacing-large);
   }
 }
 

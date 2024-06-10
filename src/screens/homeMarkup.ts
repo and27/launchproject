@@ -9,17 +9,18 @@ import {
 } from "../utils/int8";
 
 export const homeMarkup = `
-<div class="container">
   <section class="header__container">
+  <div class="header__container-inner">
     <div class="header__content">
       <h1 class="header__title">${getHomePageTitle()} <span class="header__highlight">${getHomePageTitleHighlight()}<span></h1>
       <p class="header__text">${getHomePageDescription()}</p>
       <div class="header__button-container">
         <button class="header__button">${getHomePageMainButton()}</button>
-        <a href="#howit" class="header__button--outline">${getHomePageSecondaryButton()}</a>
+        <a href="#howit" class="btn--secondary">${getHomePageSecondaryButton()}</a>
       </div>
     </div>
     <div id="lottie" class="header__lottie"></div>
+    </div>
   </section>
 
   <section class="main__container" id="howit">
@@ -45,5 +46,4 @@ export const homeMarkup = `
       </div>      
       </div>
   </section>
-</div>
 `;
