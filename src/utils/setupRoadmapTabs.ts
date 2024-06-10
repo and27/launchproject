@@ -4,24 +4,37 @@ import { roadmapStageType } from "../data/roadmapStages";
 import Lock from "../components/lock";
 import i18next from "i18next";
 import { Trophy } from "../components/trophySVG";
+import Light from "../components/icons/Light";
+import mvp from "../components/icons/mvp";
+import Evaluation from "../components/icons/Evaluation";
+import Box from "../components/icons/Box";
+import Cart from "../components/icons/Cart";
+
+const icons = {
+  idea: Light,
+  evaluation: Evaluation,
+  concept: Box,
+  businessModel: Cart,
+  mvp: mvp,
+};
 
 const createTabs = (props: ITabsProps) => {
   const { step, name: roadmapName, active, blocked } = props;
   const blockedClass = blocked ? "roadmap__stage-wrapper--blocked" : "";
   const activeClass = active ? "roadmap__stage-wrapper--active" : "";
   const title = i18next.t(`${roadmapName}.title`);
-  const img = `${roadmapName}.png`;
 
   const tab = `
   <div class="roadmap__stage-wrapper ${blockedClass} ${activeClass}">
 
-    <img class="roadmap__stage-icon" src=${img} alt="roadmap icon" />
     <button id="tab${step}" ${blocked ? "disabled" : ""}
             class="roadmap__stage" aria-controls="stage${step}" type="button" role="tab" tabindex="${
     active ? 0 : "-1"
   }">
         ${title} ${blocked ? Lock : ""}
     </button>
+    <div class="roadmap__stage-icon-container"></div>
+
     ${
       blocked
         ? `<div id="tooltip-2" role="tooltip">
@@ -52,12 +65,17 @@ export const populateTabs = (page: HTMLElement) => {
 
   const roadmapData = JSON.parse(localStorage.getItem("learningPath")!);
   roadmapData.map((stage: roadmapStageType, idx: number) => {
+    const { name } = stage;
     tabs.innerHTML += createTabs({
       ...stage,
       active: idx === 0,
-      blocked: idx > 0,
+      blocked: idx > 5,
       idx: idx + 1,
     });
+    const icon = icons[name];
+    const svgContainer = roadmap.querySelector(`#tab${idx + 1}`)
+      ?.nextElementSibling as HTMLDivElement;
+    svgContainer.innerHTML = icon;
   });
   tabs.innerHTML += Trophy;
 };
