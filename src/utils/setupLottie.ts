@@ -10,9 +10,18 @@ export function setupLottie(element: HTMLDivElement) {
   });
 }
 
-export function setupGlobeLottie(lottieTheme: string, element: HTMLDivElement) {
+export function setupGlobeLottie(element: HTMLDivElement) {
+  let theme = "light";
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    theme = "dark";
+  }
+
+  console.log("theme", theme);
   const lottiePath =
-    lottieTheme === "dark" ? "/dark-globe.json" : "/light-globe.json";
+    theme === "dark" ? "/light-globe.json" : "/dark-globe.json";
 
   const animation = lottie.loadAnimation({
     container: element,
