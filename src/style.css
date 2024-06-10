@@ -141,7 +141,7 @@ h2 {
 }
 
 .logo {
-  padding: 1.5em;
+  padding-block: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -264,7 +264,6 @@ button:disabled {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: var(--spacing-small);
   padding-inline: var(--spacing-medium);
   gap: var(--spacing-medium);
 
@@ -291,20 +290,18 @@ button:disabled {
 }
 
 .navigation {
-  color: rgb(var(--background-rgb));
-  background-image: url("/background.svg");
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 @media (prefers-color-scheme: light) {
   .navigation {
-    color: rgb(var(--foreground-rgb));
-    background-image: url("/backgroundLight.svg");
+    background-color: rgba(255, 255, 255, 0.5);
   }
 }
 
 .dropdown {
   position: relative;
-  width: 160px;
+  /* width: 160px; */
 }
 
 .dropdown-content {
