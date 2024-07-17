@@ -16,7 +16,7 @@
   -webkit-text-size-adjust: 100%;
 
   /* COLORS */
-  --color-primary-purple: #20185e;
+  --color-primary-purple: #241a6f;
   --color-dark-purple: #1b154d;
   --color-primary-black: #070707;
   --color-secondary-black: #1b1a1a;
@@ -265,7 +265,7 @@ button:disabled {
 }
 
 .navigation {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(25, 25, 25, 0.758);
 }
 
 @media (prefers-color-scheme: light) {

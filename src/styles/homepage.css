@@ -46,7 +46,7 @@
 }
 
 .header__container {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(25, 25, 25, 0.758);
 }
 
 @media (prefers-color-scheme: light) {
@@ -70,7 +70,6 @@
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  gap: 8px;
 
   @media (min-width: 768px) {
     margin-block-start: -51px;
@@ -78,11 +77,13 @@
 }
 
 .header__title {
-  margin-block-end: var(--spacing-large);
+  margin-block-end: var(--spacing-medium);
+  line-height: 1.2;
 }
 
 .header__text {
   margin-block-end: var(--spacing-medium);
+  line-height: 1.6;
 }
 
 .header__button-container {
@@ -94,6 +95,7 @@
   background-color: var(--color-primary-purple);
   color: var(--color-primary-white);
   text-align: left;
+  padding-inline: var(--spacing-large) !important;
 }
 
 .main__container {
