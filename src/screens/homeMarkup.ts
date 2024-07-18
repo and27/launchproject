@@ -44,4 +44,12 @@ export const homeMarkup = `
       </div>      
       </div>
   </section>
+
+  <section class="mission__container">
+    <div class="mission__content">
+      <h2 class="mission__title">Our Mission</h2>
+      <p class="mission__text">We believe that everyone has the potential to create something great. Our mission is to provide the tools, resources, and support to help you turn your ideas into reality.</p>
+      <div id="missionLottie"></div>
+      </div>
+  </section>
 `;

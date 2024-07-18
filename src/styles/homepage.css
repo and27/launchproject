@@ -105,8 +105,12 @@
   padding-block: var(--spacing-medium);
 
   @media (min-width: 768px) {
-    padding-inline: var(--spacing-large);
     padding-block: var(--spacing-large);
+    padding-inline: var(--spacing-xxlarge);
+  }
+
+  @media (min-width: 1440px) {
+    padding-inline: 250px;
   }
 }
 
@@ -167,4 +171,31 @@
   margin-block-end: var(--spacing-medium);
   font-size: 0.9em;
   line-height: 1.5;
+}
+
+.mission__content {
+  margin-inline: auto;
+  text-align: center;
+  max-width: 1280px;
+  padding-inline: var(--spacing-medium);
+  gap: var(--spacing-small);
+  padding-top: var(--spacing-large);
+
+  @media (min-width: 768px) {
+    padding-inline: var(--spacing-xxlarge);
+  }
+
+  @media (min-width: 1440px) {
+    padding-inline: 250px;
+  }
+}
+
+#missionLottie {
+  width: 50%;
+  margin-inline: auto;
+}
+
+.mission__text {
+  max-width: 350px;
+  margin-inline: auto;
 }

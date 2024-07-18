@@ -1,12 +1,22 @@
 import lottie from "lottie-web";
 
-export function setupLottie(element: HTMLDivElement) {
+export function setupHeroLottie(element: HTMLDivElement) {
   lottie.loadAnimation({
     container: element,
     renderer: "svg",
     loop: true,
     autoplay: true,
     path: "/animation-lottie.json",
+  });
+}
+
+export function setupMissionLottie(element: HTMLDivElement) {
+  lottie.loadAnimation({
+    container: element,
+    renderer: "svg",
+    loop: true,
+    autoplay: true,
+    path: "/people.json",
   });
 }
 

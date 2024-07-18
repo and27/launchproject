@@ -1,5 +1,5 @@
 import { setupInitialForm } from "./setupInitialForm";
-import { setupLottie } from "./setupLottie";
+import { setupHeroLottie, setupMissionLottie } from "./setupLottie";
 import { Router } from "../routes/router";
 import { setupRoadmap } from "../roadmap";
 import { loginWithGoogle } from "./supabase";
@@ -8,7 +8,8 @@ import { setupProfile } from "./setupProfile";
 export const goToHome = () => {
   Router("home");
   setupRoutes(document.querySelector<HTMLElement>("#app")!);
-  setupLottie(document.querySelector<HTMLDivElement>("#lottie")!);
+  setupHeroLottie(document.querySelector<HTMLDivElement>("#lottie")!);
+  setupMissionLottie(document.querySelector<HTMLDivElement>("#missionLottie")!);
 };
 
 export const goToRoadmap = () => {
